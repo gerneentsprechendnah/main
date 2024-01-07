@@ -12,6 +12,7 @@ in
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      <home-manager/nixos>
     ];
 
    
@@ -101,7 +102,22 @@ in
     packages = with pkgs; [
       firefox
     ];
+    
   };
+
+#users.users.eve = {
+#  name = "eve";
+#  home = "/Users/eve";
+#};
+#home-manager.users.eve = { pkgs, ... }: {
+#  home.packages = [ pkgs.atool pkgs.httpie ];
+#  programs.bash.enable = true;
+
+  # The state version is required and should stay at the version you
+  # originally installed.
+#  home.stateVersion = "23.11";
+#};
+
 
   # Enable Flatpak
      services.flatpak.enable = true;
@@ -188,5 +204,12 @@ MINSTART= hwmon0/pwm1=150
 MINSTOP= hwmon0/pwm1=0
 MAXPWM= hwmon0/pwm1=255
 '';
+
+
+
+#home-manager.users.${user} = { pkgs, ... }: {
+#home.stateVersion = "22.11";  
+#home.packages = [ ];
+#  };
 
 }
