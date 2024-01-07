@@ -206,11 +206,12 @@ MINSTOP= hwmon0/pwm1=0
 MAXPWM= hwmon0/pwm1=255
 '';
 
-
+home-manager.useUserPackages = true;
 
 home-manager.users.${user} = { pkgs, ... }: {
-home.stateVersion = "22.11";  
+home.stateVersion = "23.11";  
 home.packages = [ pkgs.chromium ];
+programs.bash.enable = true;
  };
 
 }
