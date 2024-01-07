@@ -123,7 +123,8 @@ in
   wget
   mesa
   git
-  vlc	
+  vlc
+  htop
   nano
   lm_sensors
   pulseaudio
