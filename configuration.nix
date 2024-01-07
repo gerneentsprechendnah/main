@@ -96,6 +96,7 @@ in
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.${user} = {
+    home =  "/home/stephan";
     isNormalUser = true;
     description = "Stephan";
     extraGroups = [ "networkmanager" "wheel" ];
@@ -207,9 +208,9 @@ MAXPWM= hwmon0/pwm1=255
 
 
 
-#home-manager.users.${user} = { pkgs, ... }: {
-#home.stateVersion = "22.11";  
-#home.packages = [ ];
-#  };
+home-manager.users.${user} = { pkgs, ... }: {
+home.stateVersion = "22.11";  
+home.packages = [ pkgs.chromium ];
+ };
 
 }
