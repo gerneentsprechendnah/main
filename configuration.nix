@@ -12,7 +12,8 @@ in
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-  #    <home-manager/nixos>
+#     ./home.nix
+#     <home-manager/nixos>
     ];
 
    
@@ -206,13 +207,13 @@ MINSTOP= hwmon0/pwm1=0
 MAXPWM= hwmon0/pwm1=255
 '';
 
-#home-manager.useUserPackages = true;
+home-manager.useUserPackages = true;
 
 #home-manager.users.${user} = { pkgs, ... }: {
 #home.stateVersion = "23.11";  
 #programs.home-manager.enable = true;
-#home.packages = [ pkgs.chromium ];
+#home.packages = [ pkgs.chromium pkgs.thunderbird ];
 #programs.bash.enable = true;
-# };
+#};
 
 }
