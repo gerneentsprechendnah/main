@@ -12,7 +12,7 @@ in
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      <home-manager/nixos>
+  #    <home-manager/nixos>
     ];
 
    
@@ -206,12 +206,13 @@ MINSTOP= hwmon0/pwm1=0
 MAXPWM= hwmon0/pwm1=255
 '';
 
-home-manager.useUserPackages = true;
+#home-manager.useUserPackages = true;
 
-home-manager.users.${user} = { pkgs, ... }: {
-home.stateVersion = "23.11";  
-home.packages = [ pkgs.chromium ];
-programs.bash.enable = true;
- };
+#home-manager.users.${user} = { pkgs, ... }: {
+#home.stateVersion = "23.11";  
+#programs.home-manager.enable = true;
+#home.packages = [ pkgs.chromium ];
+#programs.bash.enable = true;
+# };
 
 }
