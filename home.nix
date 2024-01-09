@@ -7,7 +7,7 @@ in
 {
   imports = [
     (import "${home-manager}/nixos")
-    (import "/home/stephan/flake/desktop.nix")
-    (import "/home/stephan/flake/programs.nix")
+#    (import "desktop.nix")
+#    (import "/home/stephan/flake/programs.nix")
   ];
 }

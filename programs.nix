@@ -8,6 +8,15 @@ home-manager.users.stephan = {
       pkgs.chromium 
       pkgs.typora 
       pkgs.bitwarden
+      pkgs.gedit 
+      pkgs.hyprland 
+      pkgs.kitty 
+      pkgs.dunst 
+      pkgs.waybar
+      pkgs.xdg-desktop-portal-hyprland
+      pkgs.sway
+      pkgs.hyprpaper
+      pkgs.font-awesome
     ];
   };
 }
