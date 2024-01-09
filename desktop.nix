@@ -3,7 +3,8 @@
   home-manager.users.stephan = {
     /* The home.stateVersion option does not have a default and must be set */
     home.stateVersion = "23.11";
-    home.packages = [ ];
+    home.packages = [ 
+    ];
    
     wayland.windowManager.sway.systemd.enable = true;
     wayland.windowManager.hyprland.systemd.enable = true;
