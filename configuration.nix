@@ -70,7 +70,7 @@ in
 
   #services.xserver.displayManager.sddm.wayland.enable = true;
   #services.xserver.displayManager.sddm.enable = true;
-  programs.hyprland.enable = true;
+  #programs.hyprland.enable = true;
 
   # Configure keymap in X11
   services.xserver = {
@@ -175,10 +175,10 @@ in
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.11"; # Did you read the comment?
 
-  system.autoUpgrade = {
-    enable = true;
-    channel = "https://nixos.org/channels/nixos-unstable";
-   };
+  #system.autoUpgrade = {
+  #  enable = true;
+  #  channel = "https://nixos.org/channels/nixos-unstable";
+  # };
   
   nix = {
     package = pkgs.nixFlakes;
@@ -207,8 +207,9 @@ MINSTOP= hwmon0/pwm1=0
 MAXPWM= hwmon0/pwm1=255
 '';
 
-home-manager.useUserPackages = true;
-
+ programs.hyprland.enable = true;
+ xdg.portal.wlr.enable = true;
+ 
 #home-manager.users.${user} = { pkgs, ... }: {
 #home.stateVersion = "23.11";  
 #programs.home-manager.enable = true;
@@ -216,4 +217,6 @@ home-manager.useUserPackages = true;
 #programs.bash.enable = true;
 #};
 
+  
 }
+
