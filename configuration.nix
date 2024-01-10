@@ -54,7 +54,8 @@ in
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
-
+  services.xserver.xkb.layout = "de";
+  
  boot.kernelPackages = pkgs.linuxPackages_latest;
  boot.initrd.kernelModules = [ "amdgpu" ]; # Video drivers
  services.xserver.videoDrivers = [ "amdgpu" ];
@@ -227,9 +228,16 @@ environment.sessionVariables = {
 };
  
  xdg.portal.wlr.enable = true;
- 
+ programs.hyprland.xwayland.enable = true;
  xdg.portal.enable = true;
  
+ xdg.portal.config = {
+  common = {
+    default = [
+      "gtk"
+    ];
+  };
+ };
 #home-manager.users.${user} = { pkgs, ... }: {
 #home.stateVersion = "23.11";  
 #programs.home-manager.enable = true;

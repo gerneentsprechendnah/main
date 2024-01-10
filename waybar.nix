@@ -206,14 +206,14 @@ window#waybar {
     border-radius: 15px;
     border: 0px;
     color: #FFFFFF;
-    background-color: #6F2A4C;
+    background-color: #5D7388;
     transition: all 0.3s ease-in-out;
     opacity: 0.4;
 }
 
 #workspaces button.active {
     color: #FFFFFF;
-    background: #6F2A4C;
+    background: #5D7388;
     border-radius: 15px;
     min-width: 40px;
     transition: all 0.3s ease-in-out;
@@ -222,7 +222,7 @@ window#waybar {
 }
 #workspaces button:hover {
     color: #FFFFFF;
-    background: #6F2A4C;
+    background: #5D7388;
     border-radius: 15px;
     opacity:0.7;
 }
@@ -244,7 +244,7 @@ tooltip label {
     margin: 8px 15px 8px 0px;
     padding: 2px 10px 0px 10px;
     border-radius: 12px;
-    color: #6F2A4C;
+    color: #5D7388;
     font-size:16px;
     font-weight:normal;
     opacity:0.8;
@@ -279,7 +279,7 @@ window#waybar.empty #window {
 }
 
 #custom-appmenu {
-    background-color: #6F2A4C;
+    background-color: #5D7388;
     font-size: 16px;
     color: #FFFFFF;
     border-radius: 15px;

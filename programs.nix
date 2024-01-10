@@ -26,10 +26,12 @@ home-manager.users.stephan = {
       pkgs.swaybg
       pkgs.xdg-desktop-portal-gtk
       pkgs.swww
-      pkgs.waybar
-      pkgs.dunst
-      pkgs.rofi-wayland
+      pkgs.unzip
+      pkgs.pywal
       
     ];
+    services.dunst.enable = true;
+    programs.waybar.enable = true;
+    programs.rofi.enable = true;
   };
 }
