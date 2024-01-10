@@ -17,6 +17,19 @@ home-manager.users.stephan = {
       pkgs.sway
       pkgs.hyprpaper
       pkgs.font-awesome
+      pkgs.pywal
+      pkgs.alacritty
+      pkgs.swaylock
+      pkgs.wlroots
+      pkgs.wlrctl
+      pkgs.wlogout
+      pkgs.swaybg
+      pkgs.xdg-desktop-portal-gtk
+      pkgs.swww
+      pkgs.waybar
+      pkgs.dunst
+      pkgs.rofi-wayland
+      
     ];
   };
 }

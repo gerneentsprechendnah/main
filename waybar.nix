@@ -5,87 +5,88 @@ home-manager.users.stephan = {
 /* The home.stateVersion option does not have a default and must be set */
 home.stateVersion = "23.11";
 
+
+
+
+
 programs.waybar.settings  = [
-{
-    "layer" = "top"; /* Waybar at top layer */
-    "position" = "top"; /* Waybar position (top|bottom|left|right)*/
-    "height" = 24; /* Waybar height (to be removed for auto height)*/
-    "width" = 1280; /* Waybar width */
-    "spacing" = 4; /* Gaps between modules (4px) */
-    /* Choose the order of the modules */
-    "modules-left" = ["sway/workspaces" "sway/mode" "sway/scratchpad" "custom/media"];
-    "modules-center" = ["sway/window"];
-    /*"modules-right" = ["mpd"; "idle_inhibitor"; "pulseaudio"; "network"; "cpu"; "memory"; "temperature"; "backlight"; "keyboard-state"; "battery"; "battery#bat2"; "clock"; "tray"];*/
-    "modules-right" = ["mpd" "idle_inhibitor" "temperature" "cpu" "memory""network" "pulseaudio" "backlight" "keyboard-state" "battery" "battery#bat2" "tray" "clock"];
-   /* Modules configuration
-     "sway/workspaces" = {
-        "disable-scroll" = true;
+{  font-family = "Fira Sans Semibold FontAwesome Roboto Helvetica Arial sans-serif";
+/* Custom Modules */
+"custom/appmenu" = {
+        "format" = "Apps";
+        "on-click" = "rofi -show drun -replace";
+        /* "on-click-right" = "~/dotfiles/hypr/scripts/keybindings.sh", */
+        "tooltip" = false;
+        };
+
+"hyprland/workspaces" = {
+        "on-click" = "activate";
+        "active-only" = false;
         "all-outputs" = true;
-        "warp-on-scroll" = false;
-        "format" = "{name} = {icon}";
+        "format" = "{}";
         "format-icons" = {
-             "1" = "";
-             "2" = "";
-             "3" = "";
-             "4" = "";
-             "5" = "";
-             "urgent" = "";
-             "focused" = "";
-             "default" = ""
-        }
-     };*/
-    "keyboard-state" = {
-        "numlock" = true;
-        "capslock" = true;
-        "format" = "{name} {icon}";
-        "format-icons" = {
-            "locked" = "";
-            "unlocked" = "";
+			"urgent" = "";
+			"active" = "";
+			"default" = "";
+        };
+        "persistent-workspaces" = {
+    "*" = 5;       
+        };       
+    };
+     
+  "wlr/taskbar" = {
+        "format" = "{icon}";
+        "icon-size" = 18;
+        "tooltip-format" = "{title}";
+        "on-click" = "activate";
+        "on-click-middle" = "close";
+        "ignore-list" = [
+           "Alacritty"
+        ];
+        "app_ids-mapping" = {
+            "firefoxdeveloperedition" = "firefox-developer-edition";
+        };
+        "rewrite" = {
+            "Firefox Web Browser" = "Firefox";
+            "Foot Server" = "Terminal";
         };
     };
     
-    "sway/mode" = {
-        "format" = "<span style =\"italic\">{}</span>";
-    }; 
-    "sway/scratchpad" = {
-    "format" = "{icon} {count}";
-    "show-empty" = false;
-    "format-icons" = ["" ""];
-    "tooltip" = true; 
-    "tooltip-format" = "{app} = {title}";
+ "hyprland/window" = {
+        "rewrite" = {
+            "(.*) - Brave" = "$1";
+            "(.*) - Chromium" = "$1";
+            "(.*) - Brave Search" = "$1";
+            "(.*) - Outlook" = "$1";
+            "(.*) Microsoft Teams" = "$1";
+        };
+        "separate-outputs" = true;
     };
-    "mpd" = {
-/*        "format" = "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime =%M =%S}/{totalTime =%M =%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% "; */
-        "format" = "  {title} - {artist} {stateIcon} [{elapsedTime =%M =%S}/{totalTime =%M =%S}] {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}[{songPosition}/{queueLength}] [{volume}%]";
-        "format-disconnected" = " Disconnected";
-        "format-stopped" = " {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped";
-        "unknown-tag" = "N/A";
-        "interval" = 2;
-        "consume-icons" = {
-            "on" = " ";
-        };
-        "random-icons" = {
-/*           "off" = "<span color =\"#f53c3c\"></span> "; */
-            "on" = " ";
-        };
-        "repeat-icons" = {
-            "on" = " ";
-        };
-        "single-icons" = {
-            "on" = "1 ";
-        };
-        "state-icons" = {
-            "paused" = "";
-            "playing" = "";
-        };
-        "tooltip-format" = "MPD (connected)";
-        "tooltip-format-disconnected" = "MPD (disconnected)";
-        "on-click" = "mpc toggle";
-/*       "on-click-right" = "foot -a ncmpcpp ncmpcpp"; */
-        "on-scroll-up" = "mpc volume +2";
-        "on-scroll-down" = "mpc volume -2";
 
-    };
+     "custom/filemanager" = {
+        "format" = "";
+        "on-click" = "~/flake/hyprland-settings/filemanager.sh";
+        "tooltip" = false; 
+        };
+      
+        "custom/exit" = {
+        "format" = "";
+        "on-click" = "wlogout";
+        "tooltip" = false;
+        };
+    
+    
+    "layer" = "top"; /* Waybar at top layer */
+    "position" = "top"; /* Waybar position (top|bottom|left|right)*/
+    "height" = 24; /* Waybar height (to be removed for auto height)*/
+    "width" = 3840; /* Waybar width */
+    "spacing" = 4; /* Gaps between modules (4px) */
+    /* Choose the order of the modules */
+    "modules-left" = ["custom/appmenu"  "custom/filemanager"];
+    "modules-center" = ["hyprland/workspaces"];
+    "modules-right" = [ "idle_inhibitor" "pulseaudio" "network" "cpu" "memory" "clock" "tray" "custom/exit"];
+  
+    
     "idle_inhibitor" = {
         "format" = "{icon}";
         "format-icons" = {
@@ -94,17 +95,18 @@ programs.waybar.settings  = [
         };
     };
     "tray" = {
-        /* "icon-size" = 21; */
+         "icon-size" = 21;
         "spacing" = 10;
     };
     "clock" = {
         /* "timezone" = "America/New_York"; */
-        "tooltip-format" = "<big>{ =%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
+        "tooltip-format" = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
         "format-alt" = "{ =%Y-%m-%d}";
     };
     "cpu" = {
-        "format" = " {usage}%";
-/*        "tooltip" = false */
+        "format" = " {usage}% ";
+        "on-click" = "alacritty -e htop";
+
     };
     "memory" = {
         "format" = " {}%";
@@ -167,20 +169,176 @@ programs.waybar.settings  = [
         };
         "on-click" = "pavucontrol";
     };
-    "custom/media" = {
-        "format" = "{icon} {}";
-        "return-type" = "json";
-        "max-length" = 40;
-        "format-icons" = {
-            "spotify" = "";
-            "default" = "🎜";
-        };
-        "escape" = true;
-        "exec" = "$HOME/.config/waybar/mediaplayer.py 2> /dev/null"; /* Script in resources folder */
-        /* "exec" = "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" */ 
-    };
+    
 }
 ];
+programs.waybar.style = ''  
+* {    
+  border: none;    
+  border-radius: 0;    
+  font-family: Source Code Pro;  
+  }
+ 
+window#waybar {
+    background-color: rgba(0,0,0,0.2);
+    border-bottom: 0px solid #ffffff;
+    /* color: #FFFFFF; */
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+#workspaces {
+    background: #FFFFFF;
+    margin: 5px 1px 6px 1px;
+    padding: 0px 1px;
+    border-radius: 15px;
+    border: 0px;
+    font-weight: bold;
+    font-style: normal;
+    opacity: 0.8;
+    font-size: 16px;
+    color: #FFFFFF;
+}
+
+#workspaces button {
+    padding: 0px 5px;
+    margin: 4px 3px;
+    border-radius: 15px;
+    border: 0px;
+    color: #FFFFFF;
+    background-color: #6F2A4C;
+    transition: all 0.3s ease-in-out;
+    opacity: 0.4;
+}
+
+#workspaces button.active {
+    color: #FFFFFF;
+    background: #6F2A4C;
+    border-radius: 15px;
+    min-width: 40px;
+    transition: all 0.3s ease-in-out;
+    opacity:1.0;
+
+}
+#workspaces button:hover {
+    color: #FFFFFF;
+    background: #6F2A4C;
+    border-radius: 15px;
+    opacity:0.7;
+}
+
+tooltip {
+    border-radius: 10px;
+    background-color:  #FFFFFF;
+    opacity:0.8;
+    padding:20px;
+    margin:0px;
+}
+
+tooltip label {
+    color: #6F2A4C;
+}
+
+#window {
+    background: @backgroundlight;
+    margin: 8px 15px 8px 0px;
+    padding: 2px 10px 0px 10px;
+    border-radius: 12px;
+    color: #6F2A4C;
+    font-size:16px;
+    font-weight:normal;
+    opacity:0.8;
+}
+
+window#waybar.empty #window {
+    background-color:transparent;
+}
+
+#taskbar {
+    background:  #FFFFFF;
+    margin: 6px 15px 6px 0px;
+    padding:0px;
+    border-radius: 15px;
+    font-weight: normal;
+    font-style: normal;
+    opacity:0.8;
+    border: 3px solid  #FFFFFF;
+}
+#taskbar button {
+    margin:0;
+    border-radius: 15px;
+    padding: 0px 5px 0px 5px;
+}
+
+.modules-left > widget:first-child > #workspaces {
+    margin-left: 0;
+}
+
+.modules-right > widget:last-child > #workspaces {
+    margin-right: 0;
+}
+
+#custom-appmenu {
+    background-color: #6F2A4C;
+    font-size: 16px;
+    color: #FFFFFF;
+    border-radius: 15px;
+    padding: 0px 10px 0px 10px;
+    margin: 6px 15px 6px 14px;
+    opacity:0.8;
+    border:3px solid #FFFFFF;
+}
+
+#idle_inhibitor {
+    margin-right: 15px;
+    font-size: 16px;
+    font-weight: bold;
+    opacity: 0.8;
+    color: #FFFFFF;
+}
+
+#idle_inhibitor.activated {
+    background-color: #dc2f2f;
+    font-size: 16px;
+    color: #FFFFFF;
+    border-radius: 15px;
+    padding: 2px 10px 0px 10px;
+    margin: 8px 15px 8px 0px;
+    opacity:0.8;  
+}
+
+#custom-exit {
+    margin: 0px 20px 0px 0px;
+    padding:0px;
+    font-size:20px;
+    color: @iconcolor;
+}
+
+#custom-brave, 
+#custom-browser, 
+#custom-keybindings, 
+#custom-outlook, 
+#custom-filemanager, 
+#cpu, 
+#memory, 
+#custom-calculator, 
+#clock, 
+#custom-cliphist, 
+#network, 
+#pulseaudio, 
+#custom-wallpaper, 
+#custom-system,
+#custom-waybarthemes {
+    margin-right: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    opacity: 0.8;
+    color: #FFFFFF;
+}
+
+
+'';
+
 };
 }
 

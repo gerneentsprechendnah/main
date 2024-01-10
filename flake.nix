@@ -24,9 +24,6 @@
              modules = [ 
              ./configuration.nix
              ./home.nix
-             ./programs.nix
-             ./desktop.nix
-             ./waybar.nix
              home-manager.nixosModules.home-manager
                {
                 home-manager.useGlobalPkgs = true;

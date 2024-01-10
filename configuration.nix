@@ -84,7 +84,15 @@ in
 
   # Enable sound with pipewire.
   sound.enable = true;
-  hardware.pulseaudio.enable = true;
+  hardware.pulseaudio.enable = false;
+  security.rtkit.enable = true;
+  services.pipewire = {
+  enable = true;
+  alsa.enable = true;
+  alsa.support32Bit = true;
+  pulse.enable = true;
+  jack.enable = true;
+};
 
     # use the example session manager (no others are packaged yet so this is enabled by default,
     # no need to redefine it in your config for now)
@@ -143,7 +151,9 @@ in
   htop
   nano
   lm_sensors
-  pulseaudio
+  killall
+  pipewire
+  libnotify
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -206,7 +216,19 @@ MAXPWM= hwmon0/pwm1=255
 '';
 
  programs.hyprland.enable = true;
+ 
+environment.sessionVariables = {
+  WLR_NO_HARDWARE_CURSORS = "1";
+  NIXOS_OZONE_WL = "1";
+};
+ 
+ hardware = {
+    opengl.enable = true;
+};
+ 
  xdg.portal.wlr.enable = true;
+ 
+ xdg.portal.enable = true;
  
 #home-manager.users.${user} = { pkgs, ... }: {
 #home.stateVersion = "23.11";  
