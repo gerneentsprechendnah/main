@@ -1,4 +1,5 @@
-{ config, pkgs, ... }:
+
+{ config, home-manager, ... }:
 { 
 users.users.stephan.isNormalUser = true;
 home-manager.users.stephan = {
@@ -8,8 +9,8 @@ home.stateVersion = "23.11";
 wayland.windowManager.hyprland = {
   enable = true;
   extraConfig = ''
-    monitor = DP-2, 3840x2160, 3840x0, 1
-    monitor = HDMI-A-1, 3840x2160, 0x0, 1
+    monitor = DP-1, 3840x2160, 3840x0, 1
+    monitor = DP-2, 3840x2160, 0x0, 1
     
     $fileManager = dolphin
     $menu = rofi -show drun
@@ -88,7 +89,7 @@ bind = $mainMod, e, exec, nautilus
 bind = $mainMod, Q, killactive, 
 bind = $mainMod, M, exit,
 bind = $mainMod, V, togglefloating, 
-bind = $mainMod, R, exec, $menu
+bind = $mainModCONTROL, Return, exec, $menu
 bind = $mainMod, P, pseudo, # dwindle
 bind = $mainMod, J, togglesplit, # dwindle
 
@@ -147,5 +148,6 @@ bindm = $mainMod, mouse:273, resizewindow
      
     };
   };
+
 };
 }

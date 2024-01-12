@@ -8,18 +8,22 @@
      home-manager.inputs.nixpkgs.follows = "nixpkgs";
      };
 
-  outputs = {self, nixpkgs, home-manager, ... }:
+  outputs = {self, nixpkgs, home-manager, ... }@inputs:
      let
+       username = "stephan";
        system = "x86_64-linux";
        pkgs = import nixpkgs {
          inherit system;
          config.allowUnfree = true;
          stateVersion = "23.11";
 	};
-      lib = nixpkgs.lib;
+       lib = nixpkgs.lib;
       in {
+       
+      
         nixosConfigurations = {
-          stephan = lib.nixosSystem {
+        specialArgs = { inherit inputs username system; };
+          "${username}" = lib.nixosSystem {
              inherit system;
              modules = [ 
              ./configuration.nix
@@ -33,7 +37,6 @@
            };
         };
         
-       
-        
+
         };
 }

@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ pkgs, username, ... }:
 
 let
   user = "stephan";
@@ -12,20 +12,50 @@ in
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+     #./hyperland.nix
     ];
 
    
-
-
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.configurationLimit = 5;
   boot.loader.timeout = 5;
   
+  # Allow unfree packages
+
+  documentation.nixos.enable = false; # .desktop
+  nixpkgs.config.allowUnfree = true;
+  nix = {
+    settings = {
+      experimental-features = "nix-command flakes";
+      auto-optimise-store = true;
+    };
+  };
+  
+  environment.systemPackages = with pkgs; [
+  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+  wget
+  git
+  htop
+  nano
+  lm_sensors
+  home-manager
+  ];
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+
+   # services
+  services = {
+    xserver = {
+      enable = true;
+      excludePackages = [ pkgs.xterm ];
+    };
+    printing.enable = true;
+    flatpak.enable = true;
+  };
+
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -52,9 +82,6 @@ in
     LC_TIME = "de_DE.UTF-8";
   };
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-  services.xserver.xkb.layout = "de";
   
  boot.kernelPackages = pkgs.linuxPackages_latest;
  boot.initrd.kernelModules = [ "amdgpu" ]; # Video drivers
@@ -80,8 +107,7 @@ in
   # Configure console keymap
   console.keyMap = "de";
 
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
+  
 
   # Enable sound with pipewire.
   sound.enable = true;
@@ -114,48 +140,12 @@ in
     
   };
 
-#users.users.eve = {
-#  name = "eve";
-#  home = "/Users/eve";
-#};
-#home-manager.users.eve = { pkgs, ... }: {
-#  home.packages = [ pkgs.atool pkgs.httpie ];
-#  programs.bash.enable = true;
-
-  # The state version is required and should stay at the version you
-  # originally installed.
-#  home.stateVersion = "23.11";
-#};
 
 
-  # Enable Flatpak
-     services.flatpak.enable = true;
-
-  # Steam
-    programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
-    };
-
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  wget
-  mesa
-  git
-  vlc
-  htop
-  nano
-  lm_sensors
-  killall
-  pipewire
-  libnotify
-  ];
+  
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -189,16 +179,7 @@ in
   #  channel = "https://nixos.org/channels/nixos-unstable";
   # };
   
-  nix = {
-    package = pkgs.nixFlakes;
-    extraOptions = "experimental-features = nix-command flakes";
-    settings.auto-optimise-store = true;
-    gc = {
-     automatic = true;
-     dates = "weekly";
-     options = "--delete-older-then 7d";
-   };
-  };
+ 
 
 hardware.fancontrol.enable = true;
 
