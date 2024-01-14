@@ -1,8 +1,5 @@
 { inputs, pkgs, home-manager, ... }:
 {
-
-
-
   imports = [
     ./desktop.nix
     ./programs.nix
