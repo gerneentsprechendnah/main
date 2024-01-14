@@ -23,7 +23,7 @@
    outputs = inputs @ { self, nixpkgs, nixpkgs-unstable, home-manager, hyprland, ... }:   # Function telling flake which inputs to use
     let
       vars = {                                                              # Variables Used In Flake
-        user = "matthias";
+        user = "stephan";
         location = "$HOME/.setup";
         terminal = "kitty";
         editor = "nvim";
