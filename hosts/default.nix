@@ -30,7 +30,6 @@ desktop = lib.nixosSystem {                               # DEPRECATED Desktop P
     modules = [
       ./desktop
       ./configuration.nix
-      ./home.nix
 
       home-manager.nixosModules.home-manager {
         home-manager.useGlobalPkgs = true;

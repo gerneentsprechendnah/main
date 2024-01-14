@@ -8,9 +8,9 @@
 
 {
   imports =
-    [ 
-    
-    ];
+    ( 
+    import ../modules
+    );
     
     users.users.${vars.user} = {
     home =  "/home/stephan";
