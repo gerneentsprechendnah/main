@@ -28,6 +28,7 @@ home-manager.users.stephan = {
       pkgs.swww
       pkgs.unzip
       pkgs.pywal
+      pkgs.firefox
       
     ];
     services.dunst.enable = true;
