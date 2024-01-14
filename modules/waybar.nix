@@ -62,7 +62,7 @@ home-manager.users.stephan = {
 		};
 	      
 		"custom/exit" = {
-		"format" = "";
+		"format" = "󰍃";
 		"on-click" = "wlogout";
 		"tooltip" = false;
 		};
