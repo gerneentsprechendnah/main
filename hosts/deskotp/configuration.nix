@@ -4,7 +4,9 @@
 
 { pkgs, vars, ... }:
 
-
+let
+  user = "stephan";
+in
 
 {
   imports =
