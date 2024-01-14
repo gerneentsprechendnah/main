@@ -74,7 +74,7 @@ home-manager.users.stephan = {
 	    "width" = 3840; /* Waybar width */
 	    "spacing" = 4; /* Gaps between modules (4px) */
 	    /* Choose the order of the modules */
-	    "modules-left" = ["custom/appmenu"  "custom/filemanager"];
+	    "modules-left" = ["custom/appmenu"  "custom/filemanager" "wlr/taskbar"];
 	    "modules-center" = ["hyprland/workspaces"];
 	    "modules-right" = [ "idle_inhibitor" "pulseaudio" "network" "cpu" "memory" "clock" "tray" "custom/exit"];
 	  
