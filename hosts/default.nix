@@ -23,8 +23,8 @@ desktop = lib.nixosSystem {                               # DEPRECATED Desktop P
       inherit inputs system unstable hyprland vars;
       host = {
         hostName = "desktop";
-        mainMonitor = "HDMI-A-1";
-        secondMonitor = "HDMI-A-2";
+        mainMonitor = "DP-1";
+        secondMonitor = "DP-2";
       };
     };
     modules = [
