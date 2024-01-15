@@ -129,12 +129,9 @@ fonts.packages = with pkgs; [                # Fonts
   hardware.enableRedistributableFirmware = true;
 
 
-   services.xserver.displayManager.gdm.enable = true;
+  # services.xserver.displayManager.gdm.enable = true;
    services.xserver.desktopManager.gnome.enable = true;
 
-  #services.xserver.displayManager.sddm.wayland.enable = true;
-  #services.xserver.displayManager.sddm.enable = true;
-  #programs.hyprland.enable = true;
 
   # Configure keymap in X11
   services.xserver = {
@@ -169,7 +166,7 @@ fonts.packages = with pkgs; [                # Fonts
     dconf.enable = true;
   };
 
- programs.hyprland.enable = true;
+
  
 environment.sessionVariables = {
   WLR_NO_HARDWARE_CURSORS = "1";
@@ -180,17 +177,19 @@ environment.sessionVariables = {
     opengl.enable = true;
 };
  
- xdg.portal.wlr.enable = true;
- programs.hyprland.xwayland.enable = true;
- xdg.portal.enable = true;
  
- xdg.portal.config = {
-  common = {
-    default = [
-      "gtk"
-    ];
-  };
- };
+  #programs.hyprland.enable = true;
+ #xdg.portal.wlr.enable = true;
+ #programs.hyprland.xwayland.enable = true;
+ #xdg.portal.enable = true;
+ 
+ #xdg.portal.config = {
+  #common = {
+   # default = [
+   #   "gtk"
+   # ];
+  #};
+ #};
 
   home-manager.users.${vars.user} = {       # Home-Manager Settings
     home = {

@@ -41,16 +41,12 @@
     };
   };
  
-  programs.hyprland.enable = true;
+hyprland.enable = true;
   
   environment = {
     systemPackages = with pkgs; [               # System-Wide Packages
-      ansible           # Automation
-      gmtp              # Used for mounting gopro
       plex-media-player # Media Player
       simple-scan       # Scanning
-      sshpass           # Ansible Dependency
-      wacomtablet       # Tablet
       lm_sensors
     ];
   };
