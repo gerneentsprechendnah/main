@@ -57,7 +57,7 @@ home-manager.users.stephan = {
 
 	     "custom/filemanager" = {
 		"format" = "";
-		"on-click" = "~/flake/hyprland-settings/filemanager.sh";
+		"on-click" = "nautilus";
 		"tooltip" = false; 
 		};
 	      
