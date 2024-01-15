@@ -28,6 +28,7 @@ home-manager.users.stephan = {
       pkgs.pywal
       pkgs.firefox
       pkgs.wofi
+      pkgs.swayidle
       
     ];
     services.dunst.enable = true;

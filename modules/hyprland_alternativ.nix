@@ -319,7 +319,7 @@ bindm = $mainMod, mouse:273, resizewindow
       xdg.configFile."hypr/hyprland.conf".text = hyprlandConf;
 
       programs.swaylock.settings = {
-        #image = "$HOME/.config/wall";
+      #image = "$HOME/.config/wall";
         color = "000000f0";
         font-size = "24";
         indicator-idle-visible = false;
@@ -342,7 +342,11 @@ bindm = $mainMod, mouse:273, resizewindow
         text-ver-color = "ffffff";
         text-wrong-color = "ffffff";
         show-failed-attempts = true;
-      };
+    };
+
+  
+
+
 
       home.file = {
         ".config/hypr/script/clamshell.sh" = {
