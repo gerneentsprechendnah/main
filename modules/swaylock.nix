@@ -1,16 +1,17 @@
 { config, pkgs, ... }:
 
 {
-  home.packages = with pkgs; [ swayidle ];
+home-manager.users.stephan = {
 
-  settings.lock.bin = "swaylock";
 
   programs.swaylock = {
     enable = true;
     package = pkgs.swaylock-effects;
     settings = {
       ignore-empty-password = true;
-      image = "${config.settings.wallpaper}";
+      screenshot = true;
+      clock = true;
+      ring-color = "bb00cc";
       indicator = true;
       indicator-idle-visible = true;
       indicator-caps-lock = true;
@@ -23,10 +24,28 @@
     };
   };
 
-  settings.lock.idle = builtins.concatStringsSep " " [
-    "swayidle -w"
-    "timeout 450 'swaylock -f'"
-    "before-sleep 'swaylock -f'"
-  ];
+services.swayidle = {
+    enable = true;
+    systemdTarget = "hyprland-session.target";
+    timeouts = [
+      {
+        timeout = 10;
+        command = "if pgrep -x swaylock; then hyprctl dispatch dpms off; fi";
+        resumeCommand = "hyprctl dispatch dpms on";
+      }
+      {
+        timeout = 450;
+        command = "${pkgs.swaylock}/bin/swaylock -fF";
+      }
+      {
+        timeout = 900;
+        command = "hyprctl dispatch dpms off";
+        resumeCommand = "hyprctl dispatch dpms on";
+      }
+    ];
+  };
+
+
+};
 }
 

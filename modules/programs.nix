@@ -17,7 +17,8 @@ home-manager.users.stephan = {
       pkgs.font-awesome
       pkgs.pywal
       pkgs.alacritty
-      pkgs.swaylock
+      #pkgs.swaylock
+      pkgs.swaylock-effects
       pkgs.wlroots
       pkgs.wlrctl
       pkgs.wlogout
@@ -29,10 +30,21 @@ home-manager.users.stephan = {
       pkgs.firefox
       pkgs.wofi
       pkgs.swayidle
-      
+      pkgs.pandoc
+      pkgs.texliveMedium
+      pkgs.onlyoffice-bin
+      pkgs.libreoffice-fresh-unwrapped
+      pkgs.zoom-us
+      pkgs.nextcloud-client
     ];
     services.dunst.enable = true;
     programs.waybar.enable = true;
     programs.rofi.enable = true;
+    
+    services.nextcloud-client = {
+    enable = true;
+   startInBackground = true;
+  };
+    
   };
 }

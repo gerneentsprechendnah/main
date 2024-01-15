@@ -242,22 +242,34 @@ device:epic-mouse-v1 {
     sensitivity = -0.5
 }
 $mainMod = Mod4
-bind = $mainMod, Return, exec, alacritty
-bind = $mainMod, e, exec, nautilus
-bind = $mainMod, Q, killactive, 
-bind = $mainMod, M, exit,
-bind = $mainMod, V, togglefloating, 
-bind = $mainModCONTROL, Return, exec, rofi -show drun
-bind = $mainMod, P, pseudo, # dwindle
-bind = $mainMod, J, togglesplit, # dwindle
+bind = $mainMod, RETURN, exec, alacritty
+bind = $mainMod, B, exec, firefox
 
-# Move focus with mainMod + arrow keys
+# Windows
+bind = $mainMod, Q, killactive
+bind = $mainMod, L, exec, swaylock --effect-blur 7x5
+bind = $mainMod, F, fullscreen
+bind = $mainMod, E, exec, nautilus
+bind = $mainMod, T, togglefloating
+bind = $mainMod SHIFT, T, exec, hyprctl dispatch workspaceopt allfloat
+bind = $mainMod, J, togglesplit
 bind = $mainMod, left, movefocus, l
 bind = $mainMod, right, movefocus, r
 bind = $mainMod, up, movefocus, u
 bind = $mainMod, down, movefocus, d
+bindm = $mainMod, mouse:272, movewindow
+bindm = $mainMod, mouse:273, resizewindow
+bind = $mainMod SHIFT, right, resizeactive, 100 0
+bind = $mainMod SHIFT, left, resizeactive, -100 0
+bind = $mainMod SHIFT, up, resizeactive, 0 -100
+bind = $mainMod SHIFT, down, resizeactive, 0 100
 
-# Switch workspaces with mainMod + [0-9]
+# Actions
+
+bind = $mainMod CTRL, RETURN, exec, rofi -show drun
+
+
+# Workspaces
 bind = $mainMod, 1, workspace, 1
 bind = $mainMod, 2, workspace, 2
 bind = $mainMod, 3, workspace, 3
@@ -268,8 +280,6 @@ bind = $mainMod, 7, workspace, 7
 bind = $mainMod, 8, workspace, 8
 bind = $mainMod, 9, workspace, 9
 bind = $mainMod, 0, workspace, 10
-
-# Move active window to a workspace with mainMod + SHIFT + [0-9]
 bind = $mainMod SHIFT, 1, movetoworkspace, 1
 bind = $mainMod SHIFT, 2, movetoworkspace, 2
 bind = $mainMod SHIFT, 3, movetoworkspace, 3
@@ -280,14 +290,35 @@ bind = $mainMod SHIFT, 7, movetoworkspace, 7
 bind = $mainMod SHIFT, 8, movetoworkspace, 8
 bind = $mainMod SHIFT, 9, movetoworkspace, 9
 bind = $mainMod SHIFT, 0, movetoworkspace, 10
+bind = $mainMod, mouse_down, workspace, e+1
+bind = $mainMod, mouse_up, workspace, e-1
+bind = $mainMod CTRL, down, workspace, empty
+
+# Fn keys
+bind = , XF86MonBrightnessUp, exec, brightnessctl -q s +10%
+bind = , XF86MonBrightnessDown, exec, brightnessctl -q s 10%-
+bind = , XF86AudioRaiseVolume, exec, pactl set-sink-volume @DEFAULT_SINK@ +5%
+bind = , XF86AudioLowerVolume, exec, pactl set-sink-volume @DEFAULT_SINK@ -5%
+bind = , XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+bind = , XF86AudioPlay, exec, playerctl play-pause
+bind = , XF86AudioPause, exec, playerctl pause
+bind = , XF86AudioNext, exec, playerctl next
+bind = , XF86AudioPrev, exec, playerctl previous
+bind = , XF86AudioMicMute, exec, pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bind = , XF86Calculator, exec, qalculate-gtk
+bind = , XF86Lock, exec, swaylock
+bind = , XF86Tools, exec, alacritty --class dotfiles-floating -e ~/dotfiles/hypr/settings/settings.sh
+
+# Passthrough SUPER KEY to Virtual Machine
+bind = $mainMod, P, submap, passthru
+submap = passthru
+bind = SUPER, Escape, submap, reset
+submap = reset
+
 
 # Example special workspace (scratchpad)
 bind = $mainMod, S, togglespecialworkspace, magic
 bind = $mainMod SHIFT, S, movetoworkspace, special:magic
-
-# Scroll through existing workspaces with mainMod + scroll
-bind = $mainMod, mouse_down, workspace, e+1
-bind = $mainMod, mouse_up, workspace, e-1
 
 # Move/resize windows with mainMod + LMB/RMB and dragging
 bindm = $mainMod, mouse:272, movewindow
@@ -306,7 +337,8 @@ bindm = $mainMod, mouse:273, resizewindow
         windowrulev2 = pin, title:^(Firefox)$
 
         exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-        exec-once= swaybg -i ~/Bilder/mountain-sunrise.jpg -m fill
+        exec-once=nextcloud
+        exec-once= swaybg -i ~/Bilder/landscape.jpg -m fill
         exec-once=${pkgs.waybar}/bin/waybar
         exec-once=${pkgs.eww-wayland}/bin/eww daemon
         #exec-once=$HOME/.config/eww/scripts/eww        # When running eww as a bar
@@ -318,55 +350,35 @@ bindm = $mainMod, mouse:273, resizewindow
     {
       xdg.configFile."hypr/hyprland.conf".text = hyprlandConf;
 
-      programs.swaylock.settings = {
-      #image = "$HOME/.config/wall";
-        color = "000000f0";
-        font-size = "24";
-        indicator-idle-visible = false;
-        indicator-radius = 100;
-        indicator-thickness = 20;
-        inside-color = "00000000";
-        inside-clear-color = "00000000";
-        inside-ver-color = "00000000";
-        inside-wrong-color = "00000000";
-        key-hl-color = "79b360";
-        line-color = "000000f0";
-        line-clear-color = "000000f0";
-        line-ver-color = "000000f0";
-        line-wrong-color = "000000f0";
-        ring-color = "ffffff50";
-        ring-clear-color = "bbbbbb50";
-        ring-ver-color = "bbbbbb50";
-        ring-wrong-color = "b3606050";
-        text-color = "ffffff";
-        text-ver-color = "ffffff";
-        text-wrong-color = "ffffff";
-        show-failed-attempts = true;
-    };
+#      programs.swaylock.settings = {
+#      #image = "$HOME/.config/wall";
+#        color = "000000f0";
+#        indicator-idle-visible = false;
+#        indicator-radius = 100;
+#        indicator-thickness = 20;
+#        inside-color = "00000000";
+#        inside-clear-color = "00000000";
+#        inside-ver-color = "00000000";
+#        inside-wrong-color = "00000000";
+#        key-hl-color = "79b360";
+#        line-clear-color = "000000f0";
+#        line-ver-color = "000000f0";
+#        line-wrong-color = "000000f0";
+#        ring-color = "ffffff50";
+##        ring-clear-color = "bbbbbb50";
+ #       ring-ver-color = "bbbbbb50";
+#        ring-wrong-color = "b3606050";
+#        text-color = "ffffff";
+#        text-ver-color = "ffffff";
+#        text-wrong-color = "ffffff";
+#        show-failed-attempts = true;
+#    };
 
   
 
 
 
-      home.file = {
-        ".config/hypr/script/clamshell.sh" = {
-          text = ''
-            #!/bin/sh
-
-            if grep open /proc/acpi/button/lid/LID/state; then
-              ${config.programs.hyprland.package}/bin/hyprctl keyword monitor "eDP-1, 1920x1080, 0x0, 1"
-            else
-              if [[ `hyprctl monitors | grep "Monitor" | wc -l` != 1 ]]; then
-                ${config.programs.hyprland.package}/bin/hyprctl keyword monitor "eDP-1, disable"
-              else
-                ${pkgs.swaylock}/bin/swaylock -f
-                ${pkgs.systemd}/bin/systemctl sleep
-              fi
-            fi
-          '';
-          executable = true;
-        };
-      };
+   
     };
   };
 }

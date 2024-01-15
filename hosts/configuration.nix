@@ -82,6 +82,7 @@
   pipewire          # Audio Server/Control
   pulseaudio        # Audio Server/Control
   vlc               # Media Player
+  flatpak
   
   # File Management
       gnome.file-roller # Archive Manager
@@ -107,6 +108,8 @@
     printing.enable = true;
     flatpak.enable = true;
   };
+
+
 
 fonts.packages = with pkgs; [                # Fonts
     carlito                                 # NixOS

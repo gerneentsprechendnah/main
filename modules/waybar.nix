@@ -76,7 +76,7 @@ home-manager.users.stephan = {
 	    /* Choose the order of the modules */
 	    "modules-left" = ["custom/exit" "custom/appmenu"  "custom/filemanager" "wlr/taskbar" "hyprland/window"];
 	    "modules-center" = ["hyprland/workspaces" ];
-	    "modules-right" = [ "idle_inhibitor" "pulseaudio" "network" "cpu" "memory" "clock" "tray" ];
+	    "modules-right" = [ "tray" "idle_inhibitor" "pulseaudio" "network" "cpu" "memory" "clock" ];
 	  
 	    
 	    "idle_inhibitor" = {

@@ -13,7 +13,8 @@
    ./bluetooth.nix
    ./wofi.nix
    ./eww.nix
-   #./swaylock.nix
+   ./swaylock.nix
+   #./nextcloud-client.nix
   ]
   
 
