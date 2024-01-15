@@ -62,8 +62,8 @@ home-manager.users.stephan = {
 		};
 	      
 		"custom/exit" = {
-		"format" = "󰍃";
-		"on-click" = "wlogout";
+		"format" = "󰐥";
+		"on-click" = ''${pkgs.eww-wayland}/bin/eww open --toggle menu --screen 0'';
 		"tooltip" = false;
 		};
 	    
@@ -74,9 +74,9 @@ home-manager.users.stephan = {
 	    "width" = 3840; /* Waybar width */
 	    "spacing" = 4; /* Gaps between modules (4px) */
 	    /* Choose the order of the modules */
-	    "modules-left" = ["custom/appmenu"  "custom/filemanager" "wlr/taskbar"];
-	    "modules-center" = ["hyprland/workspaces"];
-	    "modules-right" = [ "idle_inhibitor" "pulseaudio" "network" "cpu" "memory" "clock" "tray" "custom/exit"];
+	    "modules-left" = ["custom/exit" "custom/appmenu"  "custom/filemanager" "wlr/taskbar" "hyprland/window"];
+	    "modules-center" = ["hyprland/workspaces" ];
+	    "modules-right" = [ "idle_inhibitor" "pulseaudio" "network" "cpu" "memory" "clock" "tray" ];
 	  
 	    
 	    "idle_inhibitor" = {
@@ -90,11 +90,10 @@ home-manager.users.stephan = {
 		 "icon-size" = 21;
 		"spacing" = 10;
 	    };
-	    "clock" = {
-		/* "timezone" = "America/New_York"; */
-		"tooltip-format" = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
-		"format-alt" = "{ =%Y-%m-%d}";
-	    };
+	   clock = {
+              format = "{:%b %d %H:%M}  ";
+              on-click = "sleep 0.1; ${pkgs.eww-wayland}/bin/eww open --toggle calendar --screen 0";
+            };
 	    "cpu" = {
 		"format" = " {usage}% ";
 		"on-click" = "alacritty -e htop";
@@ -236,7 +235,7 @@ home-manager.users.stephan = {
 	    margin: 8px 15px 8px 0px;
 	    padding: 2px 10px 0px 10px;
 	    border-radius: 12px;
-	    color: #5D7388;
+	    color: #FFFFFF;
 	    font-size:16px;
 	    font-weight:normal;
 	    opacity:0.8;
@@ -247,7 +246,7 @@ home-manager.users.stephan = {
 	}
 
 	#taskbar {
-	    background:  #FFFFFF;
+	    background:  #5D7388;
 	    margin: 6px 15px 6px 0px;
 	    padding:0px;
 	    border-radius: 15px;
@@ -263,7 +262,7 @@ home-manager.users.stephan = {
 	}
 
 	.modules-left > widget:first-child > #workspaces {
-	    margin-left: 0;
+	    margin-left: 1em;
 	}
 
 	.modules-right > widget:last-child > #workspaces {
@@ -276,7 +275,7 @@ home-manager.users.stephan = {
 	    color: #FFFFFF;
 	    border-radius: 15px;
 	    padding: 0px 10px 0px 10px;
-	    margin: 6px 15px 6px 14px;
+	    margin: 6px 6px 6px 6px;
 	    opacity:0.8;
 	    border:3px solid #FFFFFF;
 	}
@@ -300,9 +299,9 @@ home-manager.users.stephan = {
 	}
 
 	#custom-exit {
-	    margin: 0px 20px 0px 0px;
+	    margin: 6px 6px 6px 15px;
 	    padding:0px;
-	    font-size:20px;
+	    font-size:24px;
 	    color: @iconcolor;
 	}
 
@@ -310,7 +309,7 @@ home-manager.users.stephan = {
 	#custom-browser, 
 	#custom-keybindings, 
 	#custom-outlook, 
-	#custom-filemanager, 
+	#custom-filemanager,
 	#cpu, 
 	#memory, 
 	#custom-calculator, 
@@ -322,6 +321,7 @@ home-manager.users.stephan = {
 	#custom-system,
 	#custom-waybarthemes {
 	    margin-right: 5px;
+	    margin-left: 5px;
 	    font-size: 16px;
 	    font-weight: bold;
 	    opacity: 0.8;

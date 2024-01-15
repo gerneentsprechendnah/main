@@ -1,10 +1,11 @@
 
-{ config, home-manager, ... }:
+{ config, lib, system, pkgs, hyprland, vars, host, ... }:
+
+
+
 { 
-users.users.stephan.isNormalUser = true;
 home-manager.users.stephan = {
-/* The home.stateVersion option does not have a default and must be set */
-home.stateVersion = "23.11";
+
 
 wayland.windowManager.hyprland = {
   enable = true;

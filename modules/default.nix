@@ -1,9 +1,19 @@
  [
     ./programs.nix
     ./waybar.nix
-    ./hyprland.nix
+   # ./waybar_alternative.nix
+   ./hyprland_alternativ.nix
+   #./hyprland.nix
     ./rofi.nix
     ./wlogout.nix
+   # ./eww.nix
+   ./options.nix
+   #./rofi_alternative.nix
+   ./dunst.nix
+   ./bluetooth.nix
+   ./wofi.nix
+   ./eww.nix
+ 
   ]
   
 
