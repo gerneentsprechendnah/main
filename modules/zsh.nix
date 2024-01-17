@@ -17,4 +17,10 @@ programs.zsh = {
     theme = "robbyrussell";
   };
 };
+
+programs.thefuck = {
+  enable = true;
+  enableZshIntegration = true;
+};
+
 }
