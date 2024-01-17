@@ -2,7 +2,6 @@
 {
 
 home-manager.users.stephan = {
-
 	  programs.rofi = {
 	    enable = true;
 	    terminal = "${pkgs.cool-retro-term}/bin/cool-retro-term";

@@ -4,7 +4,8 @@
   inputs = {
       nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";                     # Unstable Nix Packages (Default)
       nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";         # Stable Nix Packages
-
+       nix-pandoc.url = "github:serokell/nix-pandoc";
+        nix-pandoc.inputs.nixpkgs.follows = "nixpkgs";
       home-manager = {                                                      # User Environment Manager
         url = "github:nix-community/home-manager/release-23.11";
         inputs.nixpkgs.follows = "nixpkgs";
@@ -13,6 +14,8 @@
        hyprland = {                                                          # Official Hyprland Flake
         url = "github:hyprwm/Hyprland";                                     # Requires "hyprland.nixosModules.default" to be added the host modules
         inputs.nixpkgs.follows = "nixpkgs-unstable";
+        
+       
       };
     };
      
@@ -20,7 +23,7 @@
      
      
 
-   outputs = inputs @ { self, nixpkgs, nixpkgs-unstable, home-manager, hyprland, ... }:   # Function telling flake which inputs to use
+   outputs = inputs @ { self, nixpkgs, nixpkgs-unstable, home-manager, hyprland, nix-pandoc, ... }:   # Function telling flake which inputs to use
     let
       vars = {                                                              # Variables Used In Flake
         user = "stephan";
@@ -33,12 +36,14 @@
       nixosConfigurations = (                                               # NixOS Configurations
         import ./hosts {
           inherit (nixpkgs) lib;
-          inherit inputs nixpkgs nixpkgs-unstable home-manager hyprland vars;   # Inherit inputs
+          inherit inputs nixpkgs nixpkgs-unstable home-manager hyprland vars nix-pandoc;   # Inherit inputs
         }
       );
 
- 
     };
+    
+    
+    
 }
 
 #  outputs = {self, nixpkgs, home-manager, ... }@inputs:

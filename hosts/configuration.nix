@@ -202,5 +202,8 @@ environment.sessionVariables = {
       home-manager.enable = true;
     };
   };
+  
+
+  
 }
 

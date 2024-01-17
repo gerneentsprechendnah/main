@@ -31,20 +31,25 @@ home-manager.users.stephan = {
       pkgs.wofi
       pkgs.swayidle
       pkgs.pandoc
-      pkgs.texliveMedium
+      pkgs.texliveFull
       pkgs.onlyoffice-bin
-      pkgs.libreoffice-fresh-unwrapped
+      pkgs.libreoffice
       pkgs.zoom-us
       pkgs.nextcloud-client
+      pkgs.mullvad-vpn
+      pkgs.texmaker
     ];
     services.dunst.enable = true;
     programs.waybar.enable = true;
     programs.rofi.enable = true;
+ 
+   
     
+ 
     services.nextcloud-client = {
     enable = true;
    startInBackground = true;
   };
-    
+   
   };
 }
