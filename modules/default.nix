@@ -16,6 +16,8 @@
    ./swaylock.nix
    #./nextcloud-client.nix
    ./obsidian.nix
+   ./neovim.nix
+   ./zsh.nix
   ]
   
 
