@@ -14,8 +14,6 @@
        hyprland = {                                                          # Official Hyprland Flake
         url = "github:hyprwm/Hyprland";                                     # Requires "hyprland.nixosModules.default" to be added the host modules
         inputs.nixpkgs.follows = "nixpkgs-unstable";
-        
-       
       };
     };
      

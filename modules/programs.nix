@@ -38,9 +38,8 @@ home-manager.users.stephan = {
       pkgs.nextcloud-client
       pkgs.mullvad-vpn
       pkgs.texmaker
-      pkgs.vscodium
       pkgs.python311Packages.pip
-      
+      pkgs.neovim
     ];
     services.dunst.enable = true;
     programs.waybar.enable = true;
