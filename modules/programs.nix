@@ -40,6 +40,8 @@ home-manager.users.stephan = {
       pkgs.texmaker
       pkgs.python311Packages.pip
       pkgs.neovim
+      pkgs.grim
+      pkgs.grimblast
     ];
     services.dunst.enable = true;
     programs.waybar.enable = true;

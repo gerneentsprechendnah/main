@@ -131,10 +131,8 @@ with host;
         if hostName == "desktop" || hostName == "beelink" then ''
           monitor=${toString mainMonitor},3840x2160@60,3840x0,1
           monitor=${toString secondMonitor},3840x2160@60,0x0,1
-        '' else if hostName == "work" then ''
-          monitor=${toString mainMonitor},1920x1080@60,0x0,1
-          monitor=${toString secondMonitor},1920x1200@60,1920x0,1
-          monitor=${toString thirdMonitor},1920x1200@60,3840x0,1
+        '' else if hostName == "laptop" then ''
+          monitor=${toString mainMonitor},2160x1440@60,0x0,1
         '' else ''
           monitor=${toString mainMonitor},1920x1080@60,0x0,1
         '';
@@ -160,8 +158,8 @@ with host;
           bindl=,switch:Lid Switch,exec,$HOME/.config/hypr/script/clamshell.sh
         '' else "";
       execute =
-        if hostName == "desktop" || hostName == "beelink" then ''
-          exec-once=${pkgs.swayidle}/bin/swayidle -w timeout 1800 '${pkgs.swaylock}/bin/swaylock -f' timeout 3600 '${pkgs.systemd}/bin/systemctl suspend' after-resume '${config.programs.hyprland.package}/bin/hyprctl dispatch dpms on' before-sleep '${pkgs.swaylock}/bin/swaylock -f && ${config.programs.hyprland.package}/bin/hyprctl dispatch dpms off'
+        if hostName == "desktop" || hostName == "beelink" || hotName == "laptop" then ''
+          exec-once=${pkgs.swayidle}/bin/swayidle -w timeout 300 '${pkgs.swaylock}/bin/swaylock --effect-blur 7x5' timeout 600 '${pkgs.systemd}/bin/systemctl suspend' after-resume '${config.programs.hyprland.package}/bin/hyprctl dispatch dpms on' before-sleep '${pkgs.swaylock}/bin/swaylock -f && ${config.programs.hyprland.package}/bin/hyprctl dispatch dpms off'
         '' else if hostName == "work" then ''
           exec-once=${pkgs.networkmanagerapplet}/bin/nm-applet --indicator
           #exec-once=${pkgs.google-drive-ocamlfuse}/bin/google-drive-ocamlfuse /GDrive
