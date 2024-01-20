@@ -372,12 +372,15 @@ in
 	#custom-wallpaper, 
 	#custom-system,
 	#custom-waybarthemes {
-	    margin-right: 5px;
-	    margin-left: 5px;
 	    font-size: 16px;
 	    font-weight: bold;
 	    opacity: 0.8;
 	    color: #FFFFFF;
+	    background-color: #5D7388;
+	    border-radius: 15px;
+	    margin: 6px 6px 6px 6px;
+	    padding: 0px 10px 0px 10px;
+	    border: 3px solid #FFFFFF;
 	}
 
 
