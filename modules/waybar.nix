@@ -1,7 +1,59 @@
-{ config, pkgs, ... }:
-{ 
-home-manager.users.stephan = {
-	programs.waybar.settings  = [
+
+{ config, lib, pkgs, vars, host, ...}:
+let
+  colors = import ../theming/colors.nix;
+in
+with host;
+let
+  output =
+    if hostName == "beelink" || hostName == "desktop" then [
+      mainMonitor
+      secondMonitor
+    ] else if hostName == "work" then [
+      mainMonitor
+      secondMonitor
+      thirdMonitor
+    ] else [
+      mainMonitor
+    ];
+  modules-left = with config.programs;
+    if hyprland.enable == true then [
+      "custom/menu" "hyprland/workspaces"
+    ] else if sway.enable == true then [
+      "sway/workspaces" "sway/window" "sway/mode"
+    ] else [];
+
+  modules-right =
+    if hostName == "beelink" || hostName == "desktop" || hostName == "laptop" then [
+      "custom/ds4" "custom/mouse" "custom/kb" "custom/pad" "network" "cpu" "memory" "custom/pad" "pulseaudio" "custom/sink" "custom/pad" "clock" "tray" "custom/notification"
+    ] else [
+      "cpu" "memory" "custom/pad" "battery" "custom/pad" "backlight" "custom/pad" "pulseaudio" "custom/pad" "clock" "tray" "custom/notification"
+    ];
+
+  sinkBuiltIn="Built-in Audio Analog Stereo";
+  sinkVideocard=''Ellesmere HDMI Audio \[Radeon RX 470\/480 \/ 570\/580\/590\] Digital Stereo \(HDMI 3\)'';
+  sinkBluetooth="S10 Bluetooth Speaker";
+  headset=sinkBuiltIn;
+  speaker=sinkBluetooth;
+in
+{
+  config = lib.mkIf (config.wlwm.enable) {
+    environment.systemPackages = with pkgs; [
+      waybar
+    ];
+
+    home-manager.users.${vars.user} = with colors.scheme.default; {
+      programs.waybar = {
+        enable = true;
+        package = pkgs.waybar;
+        systemd ={
+          enable = true;
+          target = "sway-session.target";
+        };
+
+
+
+        settings  = [
 	{  font-family = "Fira Sans Semibold FontAwesome Roboto Helvetica Arial sans-serif";
 	/* Custom Modules */
 	"custom/appmenu" = {
@@ -67,11 +119,11 @@ home-manager.users.stephan = {
 		"tooltip" = false;
 		};
 	    
-	    
+	    /*"output" = "output";*/
 	    "layer" = "top"; /* Waybar at top layer */
 	    "position" = "top"; /* Waybar position (top|bottom|left|right)*/
 	    "height" = 24; /* Waybar height (to be removed for auto height)*/
-	    "width" = 3840; /* Waybar width */
+	    /*"width" = 3840; /* Waybar width */
 	    "spacing" = 4; /* Gaps between modules (4px) */
 	    /* Choose the order of the modules */
 	    "modules-left" = ["custom/exit" "custom/appmenu"  "custom/filemanager" "wlr/taskbar" "hyprland/window"];
@@ -163,7 +215,7 @@ home-manager.users.stephan = {
 	    
 	}
 	];
-	programs.waybar.style = ''  
+	style = ''  
 	* {    
 	  border: none;    
 	  border-radius: 0;    
@@ -333,5 +385,6 @@ home-manager.users.stephan = {
 
 };
 
+};
+};
 }
-

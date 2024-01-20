@@ -336,7 +336,7 @@ bindm = $mainMod, mouse:273, resizewindow
 
         exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
         exec-once=nextcloud
-        exec-once= swaybg -i ~/Bilder/landscape.jpg -m fill
+        exec-once= swaybg -i ~/.config/wall -m fill
         exec-once=${pkgs.waybar}/bin/waybar
         exec-once=${pkgs.eww-wayland}/bin/eww daemon
         #exec-once=$HOME/.config/eww/scripts/eww        # When running eww as a bar

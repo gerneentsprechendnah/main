@@ -19,6 +19,7 @@
    #./neovim.nix
    #./zsh.nix
    #./alacritty.nix
+   ./theming/theming.nix
   ]
   
 
