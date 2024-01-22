@@ -18,16 +18,17 @@ let
     ];
   modules-left = with config.programs;
     if hyprland.enable == true then [
-      "custom/menu" "hyprland/workspaces"
+	    "custom/exit" "custom/appmenu"  "custom/filemanager" "wlr/taskbar" "hyprland/window"
     ] else if sway.enable == true then [
       "sway/workspaces" "sway/window" "sway/mode"
     ] else [];
 
   modules-right =
-    if hostName == "beelink" || hostName == "desktop" || hostName == "laptop" then [
-      "custom/ds4" "custom/mouse" "custom/kb" "custom/pad" "network" "cpu" "memory" "custom/pad" "pulseaudio" "custom/sink" "custom/pad" "clock" "tray" "custom/notification"
+    if hostName == "beelink" || hostName == "desktop" then [
+      
+     "tray" "idle_inhibitor" "pulseaudio" "network" "cpu" "memory" "clock"
     ] else [
-      "cpu" "memory" "custom/pad" "battery" "custom/pad" "backlight" "custom/pad" "pulseaudio" "custom/pad" "clock" "tray" "custom/notification"
+     "tray" "idle_inhibitor" "pulseaudio" "network" "cpu" "memory" "backlight" "battery" "clock"
     ];
 
   sinkBuiltIn="Built-in Audio Analog Stereo";
@@ -126,9 +127,9 @@ in
 	    /*"width" = 3840; /* Waybar width */
 	    "spacing" = 4; /* Gaps between modules (4px) */
 	    /* Choose the order of the modules */
-	    "modules-left" = ["custom/exit" "custom/appmenu"  "custom/filemanager" "wlr/taskbar" "hyprland/window"];
+	    "modules-left" = modules-left;
 	    "modules-center" = ["hyprland/workspaces" ];
-	    "modules-right" = [ "tray" "idle_inhibitor" "pulseaudio" "network" "cpu" "memory" "clock" ];
+	    "modules-right" = modules-right;
 	  
 	    
 	    "idle_inhibitor" = {
