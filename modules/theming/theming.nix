@@ -7,7 +7,7 @@
 {
   home-manager.users.${vars.user} = {
     home = {
-      file.".config/wall".source = ./wall;
+      file.".config/wall".source = ./moon.jpg;
       file.".config/wall.mp4".source = ./wall.mp4;
       pointerCursor = {                     # System-Wide Cursor
         gtk.enable = true;
