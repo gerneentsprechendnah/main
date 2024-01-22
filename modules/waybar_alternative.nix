@@ -5,15 +5,22 @@
 { inputs, config, lib, pkgs, vars, host, nix-colors, home-manager, ...}:
 with host;
 let
-  modules-left =  [ "custom/menu" "hyprland/workspaces" ];
+  modules-left =  [ "custom/appmenu" "hyprland/window" ];
 
 
   modules-right =
     if hostName == "beelink" || hostName == "desktop" then [
-      "custom/ds4" "custom/mouse" "custom/kb" "custom/pad" "network" "cpu" "memory" "custom/pad" "pulseaudio" "custom/sink" "custom/pad" "clock" "tray" "custom/notification"
+      "custom/themeselector" "custom/notification" "tray" "custom/exit"
     ] else [
-      "cpu" "memory" "custom/pad" "battery" "custom/pad" "backlight" "custom/pad" "pulseaudio" "custom/pad" "clock" "tray" "custom/notification"
-    ];
+      "custom/themeselector" "custom/notification" "tray" "custom/exit" 
+      ];
+
+  modules-center =
+    if hostName == "beelin" || hostName == "desktop" then [
+       "network" "pulseaudio" "cpu" "hyprland/workspaces" "memory" "disk" "clock"
+      ] else [
+       "network" "backlight" "pulseaudio" "cpu" "hyprland/workspaces" "memory" "disk" "battery" "clock"
+       ];
 
 in
 {
@@ -29,9 +36,9 @@ home-manager.users.stephan = {
     settings = [{
       layer = "top";
       position = "top";
-      modules-left = [ "custom/appmenu" "hyprland/window" ];
-      modules-center = [ "network" "pulseaudio" "cpu" "hyprland/workspaces" "memory" "disk" "clock" ];
-      modules-right = [ "custom/themeselector" "custom/notification" "tray" "custom/exit" ];
+      modules-left = modules-left; 
+      modules-center = modules-center;
+      modules-right = modules-right;
       "hyprland/workspaces" = {
       	format = "{icon}";
       	format-icons = {
@@ -136,11 +143,16 @@ home-manager.users.stephan = {
         tooltip = false;
 	};
       "custom/exit" = {
-	"format" = "󰐥";
-	"on-click" = ''${pkgs.eww-wayland}/bin/eww open --toggle menu --screen 0'';
-	"tooltip" = false;
+	format = "󰐥";
+	on-click = ''${pkgs.eww-wayland}/bin/eww open --toggle menu --screen 0'';
+	tooltip = false;
 	};
       
+       "backlight" = {
+	/* "device" = "acpi_video1"; */
+	format = "{icon} {percent}%";
+	format-icons = ["" "" "" "" "" "" "" "" ""];
+	    };
 
 
     }];
