@@ -39,6 +39,9 @@
     kernelPackages = pkgs.linuxPackages_latest;
   };
 
+
+networking.hostName = "laptop"; # Define your hostname.
+
   hardware.sane = {                         # Scanning
     enable = true;
     extraBackends = [ pkgs.sane-airscan ];
