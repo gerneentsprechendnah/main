@@ -132,7 +132,7 @@ with host;
           monitor=${toString mainMonitor},3840x2160@60,3840x0,1
           monitor=${toString secondMonitor},3840x2160@60,0x0,1
         '' else if hostName == "laptop" then ''
-          monitor=${toString mainMonitor},2160x1440@60,0x0,1.2
+          monitor=${toString mainMonitor},2160x1440@60,0x0,1
         '' else ''
           monitor=${toString mainMonitor},1920x1080@60,0x0,1
         '';
