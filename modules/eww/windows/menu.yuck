@@ -2,7 +2,7 @@
   :exclusive "false"
   :stacking "overlay"
   :focusable false
-  :geometry (geometry :anchor "top left")
+  :geometry (geometry :anchor "top right")
   (hover :window "menu"
     (menu)))
 

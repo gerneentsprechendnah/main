@@ -1,7 +1,7 @@
  [
     ./programs.nix
-    ./waybar.nix
-   # ./waybar_alternative.nix
+   # ./waybar.nix
+    ./waybar_alternative.nix
    ./hyprland_alternativ.nix
    #./hyprland.nix
    # ./rofi.nix
