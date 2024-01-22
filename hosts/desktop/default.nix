@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{config, pkgs, ... }:
 
 {
   imports = [ ./hardware-configuration.nix ];
@@ -19,6 +19,8 @@
   };
 
   
+ networking.hostName = "desktop"; # Define your hostname.
+
  hardware = {
     opengl = {                                  # Hardware Accelerated Video
       enable = true;
