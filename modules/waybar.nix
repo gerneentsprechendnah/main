@@ -1,5 +1,5 @@
 
-{ config, lib, pkgs, vars, host, ...}:
+{ config, lib, pkgs, inputs, vars, host, nix-colors, ...}:
 let
   colors = import ../theming/colors.nix;
 in
@@ -38,6 +38,8 @@ let
   speaker=sinkBluetooth;
 in
 {
+  imports = [
+    inputs.nix-colors.homeManagerModules.default];
   config = lib.mkIf (config.wlwm.enable) {
     environment.systemPackages = with pkgs; [
       waybar
@@ -76,7 +78,7 @@ in
 		};
 		"persistent-workspaces" = {
 	    "*" = 5;       
-		};       
+		};      
 	    };
 	     
 	  "wlr/taskbar" = {

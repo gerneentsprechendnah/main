@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, lib, pkgs, unstable, inputs, vars, ... }:
+{ config, lib, pkgs, unstable, inputs, vars, nix-colors, ... }:
 
 
 
@@ -11,13 +11,13 @@
     ( 
     import ../modules
     );
-    
     users.users.${vars.user} = {
     home =  "/home/stephan";
     isNormalUser = true;
     description = "Stephan";
     extraGroups = [ "wheel" "video" "audio" "camera" "networkmanager" "lp" "scanner" ];
     };
+
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
@@ -136,6 +136,7 @@ fonts.packages = with pkgs; [                # Fonts
   # services.xserver.displayManager.gdm.enable = true;
    services.xserver.desktopManager.gnome.enable = true;
 
+ services.mullvad-vpn.enable = true;
 
   # Configure keymap in X11
   services.xserver = {
@@ -182,28 +183,16 @@ environment.sessionVariables = {
 };
  
  
-  #programs.hyprland.enable = true;
- #xdg.portal.wlr.enable = true;
- #programs.hyprland.xwayland.enable = true;
- #xdg.portal.enable = true;
- 
- #xdg.portal.config = {
-  #common = {
-   # default = [
-   #   "gtk"
-   # ];
-  #};
- #};
 
   home-manager.users.${vars.user} = {       # Home-Manager Settings
-    home = {
-      stateVersion = "23.11";
-    };
-    programs = {
-      home-manager.enable = true;
-    };
+    home = { stateVersion = "23.11"; };
+    programs = { home-manager.enable = true; };
+    colorScheme = inputs.nix-colors.colorSchemes."${vars.theme}";
+    imports = [
+    inputs.nix-colors.homeManagerModules.default
+    ];
   };
-  
+
 
   
 }

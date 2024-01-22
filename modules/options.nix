@@ -25,5 +25,5 @@ with lib;
         default = false;
       };
     };
-  };
+};
 }
