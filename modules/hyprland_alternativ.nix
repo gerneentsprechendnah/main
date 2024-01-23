@@ -264,8 +264,7 @@ bind = $mainMod SHIFT, down, resizeactive, 0 100
 
 # Actions
 
-bind = $mainMod CTRL, RETURN, exec, rofi -show drun
-
+bind = $mainMod CTRL, RETURN, exec, rofi -i -show drun -modi drun -show-icons
 
 # Workspaces
 bind = $mainMod, 1, workspace, 1
@@ -336,6 +335,7 @@ bindm = $mainMod, mouse:273, resizewindow
 
         exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
         exec-once=nextcloud
+	exec-once = nm-applet --indicator
         exec-once= swaybg -i ~/.config/wall -m fill
         exec-once=${pkgs.waybar}/bin/waybar
         exec-once=${pkgs.eww-wayland}/bin/eww daemon

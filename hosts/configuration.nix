@@ -83,7 +83,9 @@
   pulseaudio        # Audio Server/Control
   vlc               # Media Player
   flatpak
-  
+  networkmanager
+  networkmanagerapplet
+
   # File Management
       gnome.file-roller # Archive Manager
       okular            # PDF Viewer
@@ -192,6 +194,8 @@ environment.sessionVariables = {
     inputs.nix-colors.homeManagerModules.default
     ];
   };
+
+ programs.openvpn3.enable =true;
 
 
   

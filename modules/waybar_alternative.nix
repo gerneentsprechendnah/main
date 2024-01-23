@@ -139,7 +139,7 @@ home-manager.users.stephan = {
       };
       "custom/appmenu" = {
 	format = "Apps";
-	on-click = "rofi -show drun -replace";
+	on-click = "rofi -i -show drun -modi drun -show-icons";
         tooltip = false;
 	};
       "custom/exit" = {

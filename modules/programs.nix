@@ -42,13 +42,14 @@ home-manager.users.stephan = {
       pkgs.neovim
       pkgs.grim
       pkgs.grimblast
+      pkgs.networkmanager-openvpn
+      pkgs.openvpn3
     ];
     services.dunst.enable = true;
     programs.waybar.enable = true;
     programs.rofi.enable = true;
  
-   
-    
+        
  
     services.nextcloud-client = {
     enable = true;
