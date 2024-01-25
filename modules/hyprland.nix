@@ -17,7 +17,10 @@ wayland.windowManager.hyprland = {
     $menu = rofi -show drun
     $terminal = kitty
     
-    
+misc {
+disable_hyprland_logo = true}
+
+
     input {
     	kb_layout = de
     	kb_variant = 
