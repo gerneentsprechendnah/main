@@ -2,7 +2,9 @@
 {
 home-manager.users.stephan = {
     home.packages = [ 
-      pkgs.thunderbird 
+      #pkgs.thunderbird-bin
+      pkgs.betterbird
+      pkgs.thunderbird-unwrapped
       pkgs.chromium 
       pkgs.typora 
       pkgs.bitwarden
@@ -44,6 +46,9 @@ home-manager.users.stephan = {
       pkgs.grimblast
       pkgs.networkmanager-openvpn
       pkgs.openvpn3
+      pkgs.xfce.thunar
+      pkgs.catppuccin-gtk
+      pkgs.imagemagick
     ];
     services.dunst.enable = true;
     programs.waybar.enable = true;
