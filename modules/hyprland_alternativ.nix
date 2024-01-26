@@ -129,10 +129,13 @@ with host;
         '' else "";
       workspaces =
         if hostName == "desktop" || hostName == "beelink" then ''
-          monitor=${toString mainMonitor},3840x2160@60,3840x0,1
-          monitor=${toString secondMonitor},3840x2160@60,0x0,1
+ #         monitor=${toString mainMonitor},3840x2160@60,3840x0,1
+ #         monitor=${toString secondMonitor},3840x2160@60,0x0,1
+
+          monitor=${toString mainMonitor},3840x2160@60,3200x0,1.2
+          monitor=${toString secondMonitor},3840x2160@60,0x0,1.2
         '' else if hostName == "laptop" then ''
-          monitor=${toString mainMonitor},2160x1440@60,0x0,1
+          monitor=${toString mainMonitor},2160x1440@60,0x0,1.15
         '' else ''
           monitor=${toString mainMonitor},1920x1080@60,0x0,1
         '';
@@ -186,8 +189,8 @@ with host;
         gaps_in = 5
     	gaps_out = 20
     	border_size = 2
-    	col.active_border = rgba(33ccffee) rgba(00ff99ee) 45deg
-    	col.inactive_border = rgba(595959aa)
+    	col.active_border = rgba(ffe78284) rgba(ffbabbf1) 45deg
+    	col.inactive_border = rgba(ff303446)
     	layout = dwindle
     	allow_tearing = false
     	}
@@ -343,6 +346,12 @@ bindm = $mainMod, mouse:273, resizewindow
         exec-once=${pkgs.blueman}/bin/blueman-applet
         exec-once=${pkgs.swaynotificationcenter}/bin/swaync
         ${execute}
+	
+       misc {
+  disable_hyprland_logo = true
+}
+
+
       '';
     in
     {
@@ -373,7 +382,6 @@ bindm = $mainMod, mouse:273, resizewindow
 #    };
 
   
-
 
 
    

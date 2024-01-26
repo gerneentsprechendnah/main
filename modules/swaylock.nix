@@ -34,11 +34,11 @@ services.swayidle = {
         resumeCommand = "hyprctl dispatch dpms on";
       }
       {
-        timeout = 450;
+        timeout = 900;
         command = "${pkgs.swaylock}/bin/swaylock -fF";
       }
       {
-        timeout = 900;
+        timeout = 1800;
         command = "hyprctl dispatch dpms off";
         resumeCommand = "hyprctl dispatch dpms on";
       }
