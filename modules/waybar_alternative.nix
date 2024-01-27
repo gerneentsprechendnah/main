@@ -249,7 +249,14 @@ home-manager.users.stephan = {
 	#battery {
     		color: #${config.colorScheme.colors.base08};
     		background: #${config.colorScheme.colors.base00};
-    		border-radius: 15px;
+                border-radius: 15px 50px 15px 50px; 	
+		margin: 5px;
+    		padding: 2px 20px;
+	}
+		#backlight {
+    		color: #${config.colorScheme.colors.base08};
+    		background: #${config.colorScheme.colors.base00};
+    		border-radius: 50px 15px 50px 15px;
     		margin: 5px;
     		padding: 2px 20px;
 	}
