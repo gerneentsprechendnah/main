@@ -350,6 +350,7 @@ bindm = $mainMod, mouse:273, resizewindow
        misc {
   disable_hyprland_logo = true
 }
+windowrule=float,^(kitty)$, size 20%
 
 
       '';
