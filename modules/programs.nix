@@ -4,7 +4,7 @@ home-manager.users.stephan = {
     home.packages = [ 
       #pkgs.thunderbird-bin
       pkgs.betterbird
-      pkgs.thunderbird-unwrapped
+      pkgs.thunderbird
       pkgs.chromium 
       pkgs.typora 
       pkgs.bitwarden
