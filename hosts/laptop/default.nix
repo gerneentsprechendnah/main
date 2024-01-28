@@ -54,6 +54,7 @@ networking.hostName = "laptop"; # Define your hostname.
     systemPackages = with pkgs; [           # System-Wide Packages
       simple-scan       # Scanning
       onlyoffice-bin    # Office
+      brightnessctl
     ];
   };
 
