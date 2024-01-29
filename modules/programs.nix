@@ -49,6 +49,8 @@ home-manager.users.stephan = {
       pkgs.xfce.thunar
       pkgs.catppuccin-gtk
       pkgs.imagemagick
+      pkgs.audio-recorder
+      pkgs.audacity
     ];
     services.dunst.enable = true;
     programs.waybar.enable = true;

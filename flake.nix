@@ -7,6 +7,7 @@
       nix-pandoc.url = "github:serokell/nix-pandoc";
       nix-pandoc.inputs.nixpkgs.follows = "nixpkgs";
       nix-colors.url = "github:misterio77/nix-colors";
+      ags.url = "github:Aylur/ags";
       home-manager = {                                                      # User Environment Manager
         url = "github:nix-community/home-manager/release-23.11";
         inputs.nixpkgs.follows = "nixpkgs";

@@ -20,6 +20,7 @@
    #./zsh.nix
    #./alacritty.nix
    ./theming/theming.nix
+   ./ags.nix
   ]
   
 
