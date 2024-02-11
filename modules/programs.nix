@@ -51,6 +51,7 @@ home-manager.users.stephan = {
       pkgs.imagemagick
       pkgs.audio-recorder
       pkgs.audacity
+      pkgs.nwg-dock-hyprland
     ];
     services.dunst.enable = true;
     programs.waybar.enable = true;
