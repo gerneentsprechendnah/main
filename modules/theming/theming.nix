@@ -2,23 +2,23 @@
 #  GTK
 #
 
-{ pkgs, vars, ... }:
+{ pkgs, vars, config,  ... }:
 
 {
   home-manager.users.${vars.user} = {
     home = {
+      sessionVariables.GTK_THEME = "Tokyonight-Dark-B";
       file.".config/wall".source = ./wallpaper/wave-ctppccn-mocha-maroon.png;
       file.".config/wall.mp4".source = ./wall.mp4;
       pointerCursor = {                     # System-Wide Cursor
         gtk.enable = true;
         #name = "Dracula-cursors";
-        name = "Catppuccin-Mocha-Dark-Cursors";
+        name = "Catppuccin-Frappe-Lavender-Cursors";
         #package = pkgs.dracula-theme;
-        package = pkgs.catppuccin-cursors.mochaDark;
-        size = 16;
+        package = pkgs.catppuccin-cursors.frappeLavender;
+        size = 24;
       };
     };
-
 #    gtk = {                                 # Theming
 #      enable = true;
 #      theme = {
@@ -44,8 +44,8 @@ gtk = {
         size = "standard";
         tweaks = [ "rimless" "black" ];
         variant = "frappe";
-      };
-    };
+	      };
+	          };
   
 
 
@@ -64,6 +64,9 @@ gtk = {
     };
 
 
+   xdg = {
+      enable = true;
+      };
 
     qt.enable = true;
     qt.platformTheme = "gtk";
@@ -73,6 +76,9 @@ gtk = {
 
   environment.variables = {
     QT_QPA_PLATFORMTHEME="gtk2";
-  };
+   };
+
+
+
 
 }

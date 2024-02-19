@@ -31,7 +31,7 @@ home-manager.users.stephan = {
       pkgs.pywal
       pkgs.firefox
       pkgs.wofi
-      pkgs.swayidle
+     # pkgs.swayidle
       pkgs.pandoc
       pkgs.texliveFull
       pkgs.onlyoffice-bin
@@ -46,12 +46,17 @@ home-manager.users.stephan = {
       pkgs.grimblast
       pkgs.networkmanager-openvpn
       pkgs.openvpn3
-      pkgs.xfce.thunar
+      #pkgs.xfce.thunar
       pkgs.catppuccin-gtk
       pkgs.imagemagick
       pkgs.audio-recorder
       pkgs.audacity
       pkgs.nwg-dock-hyprland
+      pkgs.pdfarranger
+      pkgs.cinnamon.nemo-with-extensions
+      pkgs.gtk4
+      pkgs.gradience
+      pkgs.xdg-desktop-portal-hyprland
     ];
     services.dunst.enable = true;
     programs.waybar.enable = true;
@@ -63,6 +68,5 @@ home-manager.users.stephan = {
     enable = true;
    startInBackground = true;
   };
-   
   };
 }

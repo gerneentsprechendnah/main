@@ -5,7 +5,7 @@
 { inputs, config, lib, pkgs, vars, host, nix-colors, home-manager, ...}:
 with host;
 let
-  modules-left =  [ "custom/appmenu" "hyprland/window" ];
+  modules-left =  [ "custom/appmenu" "wlr/taskbar" "hyprland/window" ];
 
 
   modules-right =
@@ -154,6 +154,24 @@ home-manager.users.stephan = {
 	format-icons = ["" "" "" "" "" "" "" "" ""];
 	    };
 
+        "wlr/taskbar" = {
+        format = "{icon}";
+        icon-size = 18;
+        tooltip-format = "{title}";
+        on-click = "activate";
+        on-click-middle = "close";
+        ignore-list = [
+           "Alacritty"
+        ];
+        app_ids-mapping = {
+            "firefoxdeveloperedition" = "firefox-developer-edition";
+        };
+        rewrite = {
+            "Firefox Web Browser" = "Firefox";
+            "Foot Server" = "Terminal";
+        };
+    };	    
+
 
     }];
     style = ''
@@ -288,28 +306,35 @@ home-manager.users.stephan = {
     		border-radius: 15px 50px 15px 50px;
     		margin: 5px;
     		padding: 2px 20px;
-	}
-    #custom-themeselector {
+         	}
+       #custom-themeselector {
     		color: #${config.colorScheme.colors.base0D};
     		background: transparent;
     		border-radius: 5px;
     		margin: 5px;
     		padding: 2px 2px;
-    }
-	     	#custom-appmenu {
+                }
+        #custom-appmenu {
 		color: #${config.colorScheme.colors.base0B};
     		background: #${config.colorScheme.colors.base00};
     		border-radius: 0px 15px 50px 0px;
     		margin: 5px 5px 5px 0px;
     		padding: 2px 20px;
-	} 
-    		#custom-exit {
+         	} 
+    	#custom-exit {
     		color: #${config.colorScheme.colors.base05};
     		background: #${config.colorScheme.colors.base00};
     		border-radius: 15px 0px 0px 50px;
     		margin: 5px 0px 5px 5px;
     		padding: 2px 20px;
 	}
+	#taskbar {
+                color: #${config.colorScheme.colors.base0B};
+    		background: #${config.colorScheme.colors.base00};
+    		border-radius: 50px 15px 50px 0px;
+    		margin: 5px 5px 5px 0px;
+    		padding: 2px 20px;
+          	}
 
     '';
   };
