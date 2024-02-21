@@ -57,6 +57,8 @@ home-manager.users.stephan = {
       pkgs.gtk4
       pkgs.gradience
       pkgs.xdg-desktop-portal-hyprland
+      pkgs.obsidian
+      pkgs.masterpdfeditor
     ];
     services.dunst.enable = true;
     programs.waybar.enable = true;

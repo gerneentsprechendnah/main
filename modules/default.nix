@@ -15,7 +15,7 @@
    ./eww.nix
    ./swaylock.nix
    #./nextcloud-client.nix
-   ./obsidian.nix
+  # ./obsidian.nix
    #./neovim.nix
    #./zsh.nix
    #./alacritty.nix

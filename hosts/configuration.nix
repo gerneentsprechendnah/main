@@ -17,7 +17,9 @@
     description = "Stephan";
     extraGroups = [ "wheel" "video" "audio" "camera" "networkmanager" "lp" "scanner" ];
     };
-
+ nixpkgs.config.permittedInsecurePackages = [
+                "electron-25.9.0"
+              ];
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
