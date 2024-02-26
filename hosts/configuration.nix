@@ -175,7 +175,7 @@ fonts.packages = with pkgs; [                # Fonts
     dconf.enable = true;
   };
 
-
+  
  
 environment.sessionVariables = {
   WLR_NO_HARDWARE_CURSORS = "1";
@@ -199,17 +199,22 @@ environment.sessionVariables = {
 
  programs.openvpn3.enable =true;
 
-programs.xfconf.enable = true;
-programs.thunar.plugins = with pkgs.xfce; [
-  thunar-archive-plugin
-  thunar-volman
-];
-services.gvfs.enable = true; # Mount, trash, and other functionalities
-services.tumbler.enable = true; # Thumbnail support for images
+ programs.xfconf.enable = true;
+ services.gvfs.enable = true; # Mount, trash, and other functionalities
+ services.tumbler.enable = true; # Thumbnail support for images
 
   
+  programs.steam = {
+  enable = true;
+  remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+  dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+  };
 
-
+nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+    "steam"
+    "steam-original"
+    "steam-run"
+  ];
 
 }
 

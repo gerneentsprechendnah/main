@@ -12,14 +12,11 @@ home-manager.users.stephan = {
     configDir = ./ags;
 
     # additional packages to add to gjs's runtime
-    extraPackages = [ pkgs.libsoup_3 ];
-  };
-  home.packages = [ 
-  pkgs.sassc
-  pkgs.nerdfonts
-  pkgs.wayshot
-  pkgs.python311Packages.python-pam
-  pkgs.hyprpicker
-  ];
+    extraPackages = with pkgs; [
+      gtksourceview
+      webkitgtk
+      accountsservice
+    ];
+};
 };
 }

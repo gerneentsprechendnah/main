@@ -338,7 +338,7 @@ bindm = $mainMod, mouse:273, resizewindow
 
         exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
         exec-once=nextcloud
-	exec-once=nwg-dock-hyprland -d -f -o DP-1 -i 64 -hd 200
+	#exec-once=nwg-dock-hyprland -d -f -o DP-1 -i 64 -hd 200
 	exec-once = nm-applet --indicator
         exec-once= swaybg -i ~/.config/wall -m fill
         exec-once=${pkgs.waybar}/bin/waybar

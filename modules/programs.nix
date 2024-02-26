@@ -59,6 +59,7 @@ home-manager.users.stephan = {
       pkgs.xdg-desktop-portal-hyprland
       pkgs.obsidian
       pkgs.masterpdfeditor
+      pkgs.brave
     ];
     services.dunst.enable = true;
     programs.waybar.enable = true;
