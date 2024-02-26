@@ -19,8 +19,6 @@ home-manager.users.stephan = {
       pkgs.font-awesome
       pkgs.pywal
       pkgs.alacritty
-      #pkgs.swaylock
-      pkgs.swaylock-effects
       pkgs.wlroots
       pkgs.wlrctl
       pkgs.wlogout

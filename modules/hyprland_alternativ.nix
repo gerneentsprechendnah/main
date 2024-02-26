@@ -65,18 +65,11 @@ with host;
       };
       systemPackages = with pkgs; [
         grimblast       # Screenshot
-        swayidle        # Idle Daemon
-        swaylock        # Lock Screen
         wl-clipboard    # Clipboard
         wlr-randr       # Monitor Settings
       ];
     };
 
-    security.pam.services.swaylock = {
-      text = ''
-       auth include login
-      '';
-    };
 
     services.greetd = {
       enable = true;
@@ -248,7 +241,7 @@ bind = $mainMod, B, exec, firefox
 
 # Windows
 bind = $mainMod, Q, killactive
-bind = $mainMod, L, exec, swaylock --effect-blur 7x5
+bind = $mainMod, L, exec, hyprlock
 bind = $mainMod, F, fullscreen
 bind = $mainMod, E, exec, nautilus
 bind = $mainMod, T, togglefloating

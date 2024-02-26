@@ -5,7 +5,7 @@
       nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";                     # Unstable Nix Packages (Default)
       nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";         # Stable Nix Packages
       hyprlock.url = "github:hyprwm/Hyprlock";
-
+      hypridle.url = "github:hyprwm/hypridle";
       nix-pandoc.url = "github:serokell/nix-pandoc";
       nix-pandoc.inputs.nixpkgs.follows = "nixpkgs";
       nix-colors.url = "github:misterio77/nix-colors";
@@ -22,7 +22,7 @@
     };
      
 
-   outputs = inputs @ { self, nixpkgs, nixpkgs-unstable, home-manager, hyprland, nix-pandoc, nix-colors, hyprlock, ... }:   # Function telling flake which inputs to use
+   outputs = inputs @ { self, nixpkgs, nixpkgs-unstable, home-manager, hyprland, nix-pandoc, nix-colors, hyprlock, hypridle, ... }:   # Function telling flake which inputs to use
     let
       vars = {                                                              # Variables Used In Flake
         user = "stephan";
@@ -36,7 +36,7 @@
       nixosConfigurations = (                                               # NixOS Configurations
           import ./hosts {
           inherit (nixpkgs) lib;
-          inherit inputs nixpkgs nixpkgs-unstable home-manager hyprland vars nix-pandoc nix-colors hyprlock;   # Inherit inputs
+          inherit inputs nixpkgs nixpkgs-unstable home-manager hyprland vars nix-pandoc nix-colors hyprlock hypridle;   # Inherit inputs
           }
       );
   };

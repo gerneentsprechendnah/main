@@ -21,6 +21,7 @@
    #./alacritty.nix
    ./theming/theming.nix
    #/ags.nix
+   ./hyprlock.nix
   ]
   
 

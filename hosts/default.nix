@@ -1,5 +1,5 @@
 
-{ lib, inputs, nixpkgs, nixpkgs-unstable, home-manager, hyprland, vars, nix-colors, ... }:
+{ lib, inputs, nixpkgs, nixpkgs-unstable, home-manager, hyprland, vars, nix-colors, hyprlock, hypridle, ... }:
 
 let
   system = "x86_64-linux";                                  # System Architecture
@@ -20,7 +20,7 @@ in
 desktop = lib.nixosSystem {                               # DEPRECATED Desktop Profile
     inherit system;
     specialArgs = {
-      inherit inputs system unstable hyprland vars nix-colors;
+      inherit inputs system unstable hyprland vars nix-colors hyprlock hypridle ;
       host = {
         hostName = "desktop";
         mainMonitor = "DP-1";
