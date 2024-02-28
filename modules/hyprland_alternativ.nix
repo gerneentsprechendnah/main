@@ -155,12 +155,10 @@ with host;
         '' else "";
       execute =
         if hostName == "desktop" || hostName == "beelink" || hostName == "laptop" then ''
-        #exec-once=${pkgs.swayidle}/bin/swayidle -w timeout 300 '${pkgs.swaylock}/bin/swaylock --effect-blur 7x5' timeout 600 '${pkgs.systemd}/bin/systemctl suspend' after-resume '${config.programs.hyprland.package}/bin/hyprctl dispatch dpms on' before-sleep '${pkgs.swaylock}/bin/swaylock -f && ${config.programs.hyprland.package}/bin/hyprctl dispatch dpms off'
         '' else if hostName == "work" then ''
           exec-once=${pkgs.networkmanagerapplet}/bin/nm-applet --indicator
           #exec-once=${pkgs.google-drive-ocamlfuse}/bin/google-drive-ocamlfuse /GDrive
           exec-once=${pkgs.rclone}/bin/rclone mount --daemon gdrive: /GDrive
-          exec-once=${pkgs.swayidle}/bin/swayidle -w timeout 300 '${pkgs.swaylock}/bin/swaylock -f' timeout 600 '${pkgs.systemd}/bin/systemctl suspend' after-resume '${config.programs.hyprland.package}/bin/hyprctl dispatch dpms on' before-sleep '${pkgs.swaylock}/bin/swaylock -f && ${config.programs.hyprland.package}/bin/hyprctl dispatch dpms off'
         '' else "";
     in
     let
@@ -299,7 +297,6 @@ bind = , XF86AudioNext, exec, playerctl next
 bind = , XF86AudioPrev, exec, playerctl previous
 bind = , XF86AudioMicMute, exec, pactl set-source-mute @DEFAULT_SOURCE@ toggle
 bind = , XF86Calculator, exec, qalculate-gtk
-bind = , XF86Lock, exec, swaylock
 bind = , XF86Tools, exec, alacritty --class dotfiles-floating -e ~/dotfiles/hypr/settings/settings.sh
 
 # Passthrough SUPER KEY to Virtual Machine
@@ -333,7 +330,11 @@ bindm = $mainMod, mouse:273, resizewindow
         exec-once=nextcloud
 	#exec-once=nwg-dock-hyprland -d -f -o DP-1 -i 64 -hd 200
 	exec-once = nm-applet --indicator
-        exec-once= swaybg -i ~/.config/wall -m fill
+        #exec-once= swaybg -i ~/.config/wall -m fill
+	exec-once = hyprpaper
+	#exec-once = swayidle -w timeout 300 "hyprlock" \ 
+	                         timeout 600 "hyprctl dispatch dpms off"\
+				 resume "hyprctl dispatch dpms on"
         exec-once=${pkgs.waybar}/bin/waybar
 	#exec-once=ags
         exec-once=${pkgs.eww-wayland}/bin/eww daemon
@@ -353,29 +354,6 @@ windowrule=float,^(kitty)$, size 20%
     {
       xdg.configFile."hypr/hyprland.conf".text = hyprlandConf;
 
-#      programs.swaylock.settings = {
-#      #image = "$HOME/.config/wall";
-#        color = "000000f0";
-#        indicator-idle-visible = false;
-#        indicator-radius = 100;
-#        indicator-thickness = 20;
-#        inside-color = "00000000";
-#        inside-clear-color = "00000000";
-#        inside-ver-color = "00000000";
-#        inside-wrong-color = "00000000";
-#        key-hl-color = "79b360";
-#        line-clear-color = "000000f0";
-#        line-ver-color = "000000f0";
-#        line-wrong-color = "000000f0";
-#        ring-color = "ffffff50";
-##        ring-clear-color = "bbbbbb50";
- #       ring-ver-color = "bbbbbb50";
-#        ring-wrong-color = "b3606050";
-#        text-color = "ffffff";
-#        text-ver-color = "ffffff";
-#        text-wrong-color = "ffffff";
-#        show-failed-attempts = true;
-#    };
 
   
 

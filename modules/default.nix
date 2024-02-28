@@ -13,7 +13,6 @@
    ./bluetooth.nix
    ./wofi.nix
    ./eww.nix
-   ./swaylock.nix
    #./nextcloud-client.nix
   # ./obsidian.nix
    #./neovim.nix
@@ -22,6 +21,7 @@
    ./theming/theming.nix
    #/ags.nix
    ./hyprlock.nix
+   #./hypridle.nix
   ]
   
 

@@ -8,7 +8,7 @@
   home-manager.users.${vars.user} = {
     home = {
       sessionVariables.GTK_THEME = "Tokyonight-Dark-B";
-      file.".config/wall".source = ./wallpaper/wave-ctppccn-mocha-maroon.png;
+      file.".config/wall.png".source = ./wallpaper/wave-ctppccn-mocha-maroon.png;
       file.".config/wall.mp4".source = ./wall.mp4;
       pointerCursor = {                     # System-Wide Cursor
         gtk.enable = true;
@@ -68,8 +68,8 @@ gtk = {
       enable = true;
       configFile."hypr/hyprlock.conf".text = ''
         background {
-    monitor =
-    path = /home/stephan/Bilder/wave.png   # only png supported for now
+    monitor = 
+    path = /home/stephan/.config/wall.png   # only png supported for now
     color = rgba(25, 20, 20, 1.0)
 
     # all these options are taken from hyprland, see https://wiki.hyprland.org/Configuring/Variables/#blur for explanations
@@ -93,7 +93,7 @@ input-field {
     inner_color = rgb(200, 200, 200)
     font_color = rgb(10, 10, 10)
     fade_on_empty = true
-    placeholder_text = <i>Input Password...</i> # Text rendered in the input box when it's empty.
+    placeholder_text = <i>Passwort eingeben...</i> # Text rendered in the input box when it's empty.
     hide_input = false
     position = 0, -20
     halign = center
@@ -102,7 +102,7 @@ input-field {
 
 label {
     monitor =
-    text = Enter your password to unlock
+    text = Zum Entsperren Passwort eingeben
     color = rgba(200, 200, 200, 1.0)
     font_size = 25
     font_family = Noto Sans
@@ -112,6 +112,24 @@ label {
     valign = center
 }
        '';
+       
+    configFile."hypr/hyprpaper.conf".text = ''
+preload = ~/.config/wall.png
+#if more than one preload is desired then continue to preload other backgrounds
+# .. more preloads
+
+#set the default wallpaper(s) seen on initial workspace(s) --depending on the number of monitors used
+wallpaper = DP-1,~/.config/wall.png
+#if more than one monitor in use, can load a 2nd image
+wallpaper = DP-2,~/.config/wall.png
+
+#enable splash text rendering over the wallpaper
+#splash = true
+
+#fully disable ipc
+ ipc = on       
+       '';
+
       };
 
     qt.enable = true;

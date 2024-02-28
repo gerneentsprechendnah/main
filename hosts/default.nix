@@ -45,7 +45,7 @@ desktop = lib.nixosSystem {                               # DEPRECATED Desktop P
 laptop = lib.nixosSystem {                                # Laptop Profile
     inherit system;
     specialArgs = {
-      inherit inputs system unstable hyprland vars nix-colors;
+      inherit inputs system unstable hyprland vars nix-colors hyprlock hypridle;
       host = {
         hostName = "laptop";
         mainMonitor = "eDP-1";
