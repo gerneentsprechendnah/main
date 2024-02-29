@@ -2,10 +2,11 @@
 #  GTK
 #
 
-{ pkgs, vars, config,  ... }:
+{ pkgs, vars, config, host, ... }:
 
 {
-  home-manager.users.${vars.user} = {
+  home-manager.users.${vars.user} =
+  {
     home = {
       sessionVariables.GTK_THEME = "Tokyonight-Dark-B";
       file.".config/wall.png".source = ./wallpaper/wave-ctppccn-mocha-maroon.png;
@@ -67,10 +68,10 @@ gtk = {
    xdg = {
       enable = true;
       configFile."hypr/hyprlock.conf".text = ''
-        background {
-    monitor = 
-    path = /home/stephan/.config/wall.png   # only png supported for now
-    color = rgba(25, 20, 20, 1.0)
+    background {
+      monitor = 
+      path = /home/stephan/.config/wall.png   # only png supported for now
+      color = rgba(25, 20, 20, 1.0)
 
     # all these options are taken from hyprland, see https://wiki.hyprland.org/Configuring/Variables/#blur for explanations
     blur_passes = 4 # 0 disables blurring
@@ -80,9 +81,9 @@ gtk = {
     brightness = 0.8172
     vibrancy = 0.1696
     vibrancy_darkness = 0.0
-}
+    }
 
-input-field {
+    input-field {
     monitor =
     size = 200, 50
     outline_thickness = 1
@@ -98,9 +99,9 @@ input-field {
     position = 0, -20
     halign = center
     valign = center
-}
+    }
 
-label {
+    label {
     monitor =
     text = Zum Entsperren Passwort eingeben
     color = rgba(200, 200, 200, 1.0)
@@ -110,27 +111,18 @@ label {
     position = 0, 200
     halign = center
     valign = center
-}
+    }
        '';
-       
+
     configFile."hypr/hyprpaper.conf".text = ''
-preload = ~/.config/wall.png
-#if more than one preload is desired then continue to preload other backgrounds
-# .. more preloads
-
-#set the default wallpaper(s) seen on initial workspace(s) --depending on the number of monitors used
-wallpaper = DP-1,~/.config/wall.png
-#if more than one monitor in use, can load a 2nd image
-wallpaper = DP-2,~/.config/wall.png
-
-#enable splash text rendering over the wallpaper
-#splash = true
-
-#fully disable ipc
- ipc = on       
+    preload = ~/.config/wall.png
+    wallpaper = DP-1,~/.config/wall.png 
+    wallpaper = DP-2,~/.config/wall.png
+    wallpaper = eDP-1,~/.config/wall.png
+    ipc = on       
        '';
 
-      };
+    };  
 
     qt.enable = true;
     qt.platformTheme = "gtk";
