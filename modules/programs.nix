@@ -46,7 +46,6 @@ home-manager.users.stephan = {
       pkgs.pdfarranger
       pkgs.obsidian
       pkgs.masterpdfeditor
-      pkgs.swayidle
     ];
     services.dunst.enable = true;
     programs.waybar.enable = true;

@@ -332,6 +332,7 @@ bindm = $mainMod, mouse:273, resizewindow
 	exec-once = nm-applet --indicator
         #exec-once= swaybg -i ~/.config/wall -m fill
 	exec-once = hyprpaper
+	exec-once = hypridle
 	#exec-once = swayidle -w timeout 300 "hyprlock" \ 
 	                         timeout 600 "hyprctl dispatch dpms off"\
 				 resume "hyprctl dispatch dpms on"

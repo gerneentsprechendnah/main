@@ -87,6 +87,7 @@
   flatpak
   networkmanager
   networkmanagerapplet
+  unstable.hypridle
 
   # File Management
       gnome.file-roller # Archive Manager

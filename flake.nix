@@ -5,7 +5,6 @@
       nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";                     # Unstable Nix Packages (Default)
       nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";         # Stable Nix Packages
       hyprlock.url = "github:hyprwm/Hyprlock";
-      hypridle.url = "github:hyprwm/hypridle";
       nix-pandoc.url = "github:serokell/nix-pandoc";
       nix-pandoc.inputs.nixpkgs.follows = "nixpkgs";
       nix-colors.url = "github:misterio77/nix-colors";
@@ -19,8 +18,13 @@
        url = "github:hyprwm/Hyprland";                                     # Requires "hyprland.nixosModules.default" to be added the host modules
        inputs.nixpkgs.follows = "nixpkgs-unstable";
       };
-    };
-     
+    
+
+      hypridle = {
+      url = "github:hyprwm/hypridle";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      };
+    }; 
 
    outputs = inputs @ { self, nixpkgs, nixpkgs-unstable, home-manager, hyprland, nix-pandoc, nix-colors, hyprlock, hypridle, ... }:   # Function telling flake which inputs to use
     let
