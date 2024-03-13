@@ -31,13 +31,6 @@ params = [
       url = "https://en.wikipedia.org/wiki/Special:Search?search=%s&go=Go";
     }
 
-    {
-      name = "wikipedia";    
-      tags = [ "wiki" ];    
-      keyword = "wiki";    
-      url = "https://en.wikipedia.org/wiki/Special:Search?search=%s&go=Go";   
-     }  
-
     {    
       name = "kernel.org";    
       url = "https://www.kernel.org";   
@@ -55,16 +48,17 @@ params = [
                     name = "wiki";        
                     tags = [ "wiki" "nix" ];        
                     url = "https://nixos.wiki/";       
-                  }    
+                  } 
+
+                  {
+                    name = "";
+                    tags = [ "kalender" ];
+                    keyword = "kalender";
+                    url = "https://nextcloud.pve-proxmox.de/index.php/apps/calendar/dayGridMonth/now";
+                   }
                 ];  
       }
-
-    {
-      name = "";
-      tags = [ "kalender" ];
-      keyword = "kalender";
-      url = "https://nextcloud.pve-proxmox.de/index.php/apps/calendar/dayGridMonth/now";
-    }
+   
   ];
 
   settings = {
