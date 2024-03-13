@@ -8,13 +8,16 @@
       nix-pandoc.url = "github:serokell/nix-pandoc";
       nix-pandoc.inputs.nixpkgs.follows = "nixpkgs";
       nix-colors.url = "github:misterio77/nix-colors";
-      ags.url = "github:Aylur/ags";
+      #ags.url = "github:Aylur/ags";
       home-manager = {                                                      # User Environment Manager
         url = "github:nix-community/home-manager/release-23.11";
         inputs.nixpkgs.follows = "nixpkgs";
       };
-     
-       hyprland = {                                                          # Official Hyprland Flake
+      firefox-addons = { 
+        url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons"; 
+        inputs.nixpkgs.follows = "nixpkgs"; 
+        }; 
+      hyprland = {                                                          # Official Hyprland Flake
        url = "github:hyprwm/Hyprland";                                     # Requires "hyprland.nixosModules.default" to be added the host modules
        inputs.nixpkgs.follows = "nixpkgs-unstable";
       };

@@ -22,6 +22,7 @@
    #/ags.nix
    ./hyprlock.nix
    #./hypridle.nix
+   ./firefox.nix
   ]
   
 

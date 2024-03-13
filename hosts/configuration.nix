@@ -18,8 +18,13 @@
     extraGroups = [ "wheel" "video" "audio" "camera" "networkmanager" "lp" "scanner" ];
     };
  nixpkgs.config.permittedInsecurePackages = [
-                "electron-25.9.0"
-              ];
+                "electron-24.8.6"
+		"electron-25.9.0"
+		];
+ nixpkgs.config.allowUnfree = true;
+
+nixpkgs.overlays = [ (final: prev: { obsidian-wayland = prev.obsidian.override {electron = final.electron_24;}; }) ];
+
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
@@ -51,7 +56,7 @@
     gc = {                                  # Garbage Collection
       automatic = true;
       dates = "weekly";
-      options = "--delete-older-than 2d";
+      options = "--delete-older-than 10d";
     };
     package = pkgs.nixVersions.unstable;    # Enable Flakes
     registry.nixpkgs.flake = inputs.nixpkgs;
@@ -61,7 +66,6 @@
       keep-derivations      = true
     '';
   };
- nixpkgs.config.allowUnfree = true;
 
   
   environment.systemPackages = with pkgs; [
@@ -88,6 +92,7 @@
   networkmanager
   networkmanagerapplet
   unstable.hypridle
+  obsidian-wayland
 
   # File Management
       gnome.file-roller # Archive Manager
@@ -216,6 +221,9 @@ nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
     "steam-original"
     "steam-run"
   ];
+
+
+
 
 }
 

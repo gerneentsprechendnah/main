@@ -1,4 +1,4 @@
-{ config, pkgs,  ... }:
+{ config, pkgs, home-manager,  ... }:
 {
 home-manager.users.stephan = {
     home.packages = [ 
@@ -22,8 +22,8 @@ home-manager.users.stephan = {
       pkgs.swaybg
       pkgs.xdg-desktop-portal-gtk
       pkgs.swww
-      pkgs.unzip
-      pkgs.firefox
+      #pkgs.unzip
+      #pkgs.firefox
       pkgs.pandoc
       pkgs.texliveFull
       pkgs.onlyoffice-bin
@@ -46,16 +46,26 @@ home-manager.users.stephan = {
       pkgs.pdfarranger
       pkgs.obsidian
       pkgs.masterpdfeditor
-    ];
+      ];
+
     services.dunst.enable = true;
     programs.waybar.enable = true;
     programs.rofi.enable = true;
- 
-        
- 
     services.nextcloud-client = {
     enable = true;
-   startInBackground = true;
+    startInBackground = true;
+    };
+    
+
+    accounts.email.accounts.gmail = {
+    primary = true;
+    address = "stephan.ritthaler@gmail.com";
+    thunderbird.enable = true;
+    realName = "Stephan Ritthaler";
+};
   };
-  };
+   
+
+   nix.gc.automatic = true;   
+   nix.gc.options = "--delete-older-than 10d";
 }

@@ -25,8 +25,8 @@
     opengl = {                                  # Hardware Accelerated Video
       enable = true;
       extraPackages = with pkgs; [
-        intel-media-driver
-        vaapiIntel
+        mesa.drivers
+	libvdpau-va-gl
         rocm-opencl-icd
         rocm-opencl-runtime
         amdvlk
@@ -42,7 +42,9 @@
       extraBackends = [ pkgs.sane-airscan ];
     };
   };
- 
+
+
+
 hyprland.enable = true;
   
   environment = {
