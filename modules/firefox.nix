@@ -39,12 +39,12 @@ params = [
     {    
     name = "Nix sites";    
     toolbar = true;
-    folder = "Privat";
     bookmarks = [       
                   {  
                     name = "wiki";        
                     tags = [ "wiki" "nix" ];        
-                    url = "https://nixos.wiki/";       
+                    url = "https://nixos.wiki/";   
+                    folder = "Privat";
                   } 
                   {
                     name = "";
