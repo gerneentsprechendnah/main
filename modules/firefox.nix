@@ -44,7 +44,6 @@ params = [
                     name = "wiki";        
                     tags = [ "wiki" "nix" ];        
                     url = "https://nixos.wiki/";   
-                    folder = "Privat";
                   } 
                   {
                     name = "";
