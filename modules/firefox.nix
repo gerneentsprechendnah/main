@@ -23,8 +23,6 @@ params = [
   };
   search.force = true;
 
-  toolbar = true;
-
   bookmarks = [
     {
       name = "wikipedia";
