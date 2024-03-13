@@ -36,7 +36,7 @@ params = [
       tags = [ "kalender" ];
       keyword = "kalender";
       url = "https://nextcloud.pve-proxmox.de/index.php/apps/calendar/dayGridMonth/now";
-      directory = "toolbar";
+      folder = "toolbar";
     }
   ];
 
