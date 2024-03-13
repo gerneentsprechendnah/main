@@ -46,7 +46,7 @@ params = [
                     url = "https://nixos.wiki/";       
                   } 
                   {
-                    name = "kalender";
+                    name = "";
                     tags = [ "kalender" ];
                     keyword = "kalender";
                     url = "https://nextcloud.pve-proxmox.de/index.php/apps/calendar/dayGridMonth/now";
