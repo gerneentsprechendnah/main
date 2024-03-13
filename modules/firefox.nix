@@ -39,19 +39,14 @@ params = [
     {    
     name = "Nix sites";    
     toolbar = true;    
-    bookmarks = [      
-                  {        
-                    name = "homepage";        
-                    url = "https://nixos.org/";     
-                    }      
+    bookmarks = [       
                   {  
                     name = "wiki";        
                     tags = [ "wiki" "nix" ];        
                     url = "https://nixos.wiki/";       
                   } 
-
                   {
-                    name = "";
+                    name = "kalender";
                     tags = [ "kalender" ];
                     keyword = "kalender";
                     url = "https://nextcloud.pve-proxmox.de/index.php/apps/calendar/dayGridMonth/now";
