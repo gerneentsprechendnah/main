@@ -46,6 +46,7 @@ home-manager.users.stephan = {
       pkgs.pdfarranger
       pkgs.obsidian
       pkgs.masterpdfeditor
+      pkgs.signal-desktop
       ];
 
     services.dunst.enable = true;
