@@ -23,6 +23,8 @@ params = [
   };
   search.force = true;
 
+  toolbar = true;
+
   bookmarks = [
     {
       name = "wikipedia";
@@ -36,7 +38,6 @@ params = [
       tags = [ "kalender" ];
       keyword = "kalender";
       url = "https://nextcloud.pve-proxmox.de/index.php/apps/calendar/dayGridMonth/now";
-      folder = "toolbar";
     }
   ];
 
