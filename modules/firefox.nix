@@ -38,7 +38,8 @@ params = [
 
     {    
     name = "Nix sites";    
-    toolbar = true;    
+    toolbar = true;
+    folder = "Privat";
     bookmarks = [       
                   {  
                     name = "wiki";        
