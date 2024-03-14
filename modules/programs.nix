@@ -47,6 +47,7 @@ home-manager.users.stephan = {
       pkgs.obsidian
       pkgs.masterpdfeditor
       pkgs.signal-desktop
+      pkgs.streamdeck-ui
       ];
 
     services.dunst.enable = true;
