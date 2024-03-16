@@ -40,17 +40,34 @@ params = [
     name = "Nix sites";    
     toolbar = true;
     bookmarks = [       
-                  {  
-                    name = "wiki";        
-                    tags = [ "wiki" "nix" ];        
-                    url = "https://nixos.wiki/";   
-                  } 
                   {
-                    name = "";
+                    name = "Kalender";
                     tags = [ "kalender" ];
                     keyword = "kalender";
                     url = "https://nextcloud.pve-proxmox.de/index.php/apps/calendar/dayGridMonth/now";
                    }
+		   {
+		    name = "Telefon";
+		    tags = [ "telefon" ];
+		    keyword = "telefon";
+		    url = "http://10.10.10.16/";
+		   }
+                   {  
+                    name = "Unraid";        
+                    tags = [ "unraid" ];        
+                    url = "http://10.10.10.22";   
+                  }
+		   
+                  {  
+                    name = "PVE";        
+                    tags = [ "proxmox" "pve" ];        
+                    url = "https://192.168.0.2:8006";   
+                  }
+		   {  
+                    name = "PBS";        
+                    tags = [ "backup" ];        
+                    url = "https://10.10.10.28:8007";   
+                  }
                 ];  
       }
    

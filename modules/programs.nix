@@ -47,7 +47,9 @@ home-manager.users.stephan = {
       pkgs.obsidian
       pkgs.masterpdfeditor
       pkgs.signal-desktop
-      pkgs.streamdeck-ui
+      pkgs.python311Packages.streamdeck
+      pkgs.python312Packages.streamdeck
+      pkgs.marker
       ];
 
     services.dunst.enable = true;
@@ -58,6 +60,9 @@ home-manager.users.stephan = {
     startInBackground = true;
     };
     
+ 
+
+
 
     accounts.email.accounts.gmail = {
     primary = true;
@@ -70,4 +75,13 @@ home-manager.users.stephan = {
 
    nix.gc.automatic = true;   
    nix.gc.options = "--delete-older-than 10d";
+   
+
+
+ programs.streamdeck-ui = {
+    enable = true;
+    autoStart = true; # optional
+  }; 
+
+
 }
