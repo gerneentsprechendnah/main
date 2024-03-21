@@ -46,6 +46,15 @@ params = [
                     keyword = "kalender";
                     url = "https://nextcloud.pve-proxmox.de/index.php/apps/calendar/dayGridMonth/now";
                    }
+
+                  {
+                    name = "Bookmarks";
+                    tags = [ "bookmarks" ];
+                    keyword = "bookmarks";
+                    url = "https://nextcloud.pve-proxmox.de/index.php/apps/bookmarks";
+                   }
+
+
 		   {
 		    name = "Telefon";
 		    tags = [ "telefon" ];
