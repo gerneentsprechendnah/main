@@ -18,7 +18,7 @@
     initrd.kernelModules = [ "amdgpu" ];        # Video Drivers
   };
 
-  
+
  networking.hostName = "desktop"; # Define your hostname.
 
  hardware = {
@@ -49,7 +49,6 @@ hyprland.enable = true;
   
   environment = {
     systemPackages = with pkgs; [               # System-Wide Packages
-      plex-media-player # Media Player
       simple-scan       # Scanning
       lm_sensors
     ];

@@ -17,13 +17,8 @@
     description = "Stephan";
     extraGroups = [ "wheel" "video" "audio" "camera" "networkmanager" "lp" "scanner" ];
     };
- nixpkgs.config.permittedInsecurePackages = [
-                "electron-24.8.6"
-		"electron-25.9.0"
-		];
  nixpkgs.config.allowUnfree = true;
 
-nixpkgs.overlays = [ (final: prev: { obsidian-wayland = prev.obsidian.override {electron = final.electron_24;}; }) ];
 
 
   # Set your time zone.
@@ -92,7 +87,8 @@ nixpkgs.overlays = [ (final: prev: { obsidian-wayland = prev.obsidian.override {
   networkmanager
   networkmanagerapplet
   unstable.hypridle
-  obsidian-wayland
+  unstable.obsidian
+  unstable.plex-media-player
 
   # File Management
       gnome.file-roller # Archive Manager
@@ -191,6 +187,8 @@ environment.sessionVariables = {
  hardware = {
     opengl.enable = true;
 };
+
+
  
  
 

@@ -44,12 +44,15 @@ home-manager.users.stephan = {
       pkgs.audacity
       pkgs.nwg-dock-hyprland
       pkgs.pdfarranger
-      pkgs.obsidian
       pkgs.masterpdfeditor
       pkgs.signal-desktop
       pkgs.python311Packages.streamdeck
       pkgs.python312Packages.streamdeck
       pkgs.marker
+      pkgs.gimp
+      pkgs.ocrmypdf
+      pkgs.tesseract
+      pkgs.xfce.thunar
       ];
 
     services.dunst.enable = true;
