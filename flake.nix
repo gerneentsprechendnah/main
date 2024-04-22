@@ -8,7 +8,7 @@
       nix-pandoc.url = "github:serokell/nix-pandoc";
       nix-pandoc.inputs.nixpkgs.follows = "nixpkgs";
       nix-colors.url = "github:misterio77/nix-colors";
-      #ags.url = "github:Aylur/ags";
+      nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
       home-manager = {                                                      # User Environment Manager
         url = "github:nix-community/home-manager/release-23.11";
         inputs.nixpkgs.follows = "nixpkgs";
@@ -29,7 +29,7 @@
       };
     }; 
 
-   outputs = inputs @ { self, nixpkgs, nixpkgs-unstable, home-manager, hyprland, nix-pandoc, nix-colors, hyprlock, hypridle, ... }:   # Function telling flake which inputs to use
+   outputs = inputs @ { self, nixpkgs, nixpkgs-unstable, home-manager, nix-pandoc, nix-colors, hyprlock, hypridle, nixos-cosmic, hyprland, ... }:   # Function telling flake which inputs to use
     let
       vars = {                                                              # Variables Used In Flake
         user = "stephan";
@@ -43,7 +43,7 @@
       nixosConfigurations = (                                               # NixOS Configurations
           import ./hosts {
           inherit (nixpkgs) lib;
-          inherit inputs nixpkgs nixpkgs-unstable home-manager hyprland vars nix-pandoc nix-colors hyprlock hypridle;   # Inherit inputs
+          inherit inputs nixpkgs nixpkgs-unstable home-manager vars nix-pandoc nix-colors hyprlock hypridle nixos-cosmic hyprland;   # Inherit inputs
           }
       );
   };

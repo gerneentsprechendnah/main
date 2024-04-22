@@ -8,7 +8,7 @@
   home-manager.users.${vars.user} =
   {
     home = {
-      sessionVariables.GTK_THEME = "Tokyonight-Dark-B";
+      sessionVariables.GTK_THEME = "Catppuccin-Frappe-Standard-Lavender-Dark";
       file.".config/wall.png".source = ./wallpaper/wave-ctppccn-mocha-maroon.png;
       file.".config/wall.mp4".source = ./wall.mp4;
       pointerCursor = {                     # System-Wide Cursor
@@ -122,6 +122,9 @@ gtk = {
     ipc = on       
        '';
 
+
+
+
     };  
 
     qt.enable = true;
@@ -133,8 +136,5 @@ gtk = {
   environment.variables = {
     QT_QPA_PLATFORMTHEME="gtk2";
    };
-
-
-
 
 }

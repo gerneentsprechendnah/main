@@ -23,7 +23,6 @@
    ./hyprlock.nix
    #./hypridle.nix
    ./firefox.nix
-   #./thunderbird.nix
   ]
   
 

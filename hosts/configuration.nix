@@ -17,8 +17,13 @@
     description = "Stephan";
     extraGroups = [ "wheel" "video" "audio" "camera" "networkmanager" "lp" "scanner" ];
     };
+ nixpkgs.config.permittedInsecurePackages = [
+                "electron-24.8.6"
+		"electron-25.9.0"
+		];
  nixpkgs.config.allowUnfree = true;
 
+nixpkgs.overlays = [ (final: prev: { obsidian-wayland = prev.obsidian.override {electron = final.electron_24;}; }) ];
 
 
   # Set your time zone.
@@ -87,8 +92,15 @@
   networkmanager
   networkmanagerapplet
   unstable.hypridle
-  unstable.obsidian
-  unstable.plex-media-player
+  obsidian-wayland
+  unstable.cosmic-edit 
+
+    (catppuccin-gtk.override {
+    accents = [ "lavender" ]; # You can specify multiple accents here to output multiple themes
+    size = "compact";
+    tweaks = [ "rimless" "black" ]; # You can also specify multiple tweaks here
+    variant = "frappe";
+  })
 
   # File Management
       gnome.file-roller # Archive Manager
@@ -101,6 +113,9 @@
       zip               # Zip
   
   ];
+
+
+
 
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -187,8 +202,6 @@ environment.sessionVariables = {
  hardware = {
     opengl.enable = true;
 };
-
-
  
  
 
