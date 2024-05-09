@@ -47,11 +47,12 @@ home-manager.users.stephan = {
       pkgs.obsidian
       pkgs.masterpdfeditor
       pkgs.signal-desktop
-      pkgs.python311Packages.streamdeck
-      pkgs.python312Packages.streamdeck
       pkgs.marker
       pkgs.xfce.thunar
       pkgs.gimp
+      pkgs.unifi
+      pkgs.telegram-desktop
+      pkgs.vscode    
       ];
 
     services.dunst.enable = true;
@@ -62,7 +63,7 @@ home-manager.users.stephan = {
     startInBackground = true;
     };
     
- 
+
 
 
 

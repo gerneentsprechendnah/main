@@ -19,7 +19,13 @@
     
   };
 
+
+services.unifi.enable = true;
+
   
+ services.xserver.displayManager.startx.enable = true;
+
+
  networking.hostName = "desktop"; # Define your hostname.
 networking.hostId = "2245754b";
  hardware = {
@@ -45,8 +51,10 @@ networking.hostId = "2245754b";
   };
 
 
-
-hyprland.enable = true;
+#hyprland.enable = true;
+gnome.enable = true;
+#services.xserver.displayManager.gdm.enable = true;
+#services.xserver.desktopManager.gnome.enable = true;
   
   environment = {
     systemPackages = with pkgs; [               # System-Wide Packages
@@ -82,5 +90,7 @@ fileSystems."/home/stephan/Nextcloud" = {
 
     in ["${automount_opts},credentials=/etc/nixos/smb-secrets,uid=1000,gid=100"];
   };
+
+ 
 
 }

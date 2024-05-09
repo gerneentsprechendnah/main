@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, lib, pkgs, unstable, inputs, vars, nix-colors, hyprlock, hypridle, ... }:
+{ lib, pkgs, unstable, inputs, vars, nix-colors, ... }:
 
 
 
@@ -11,19 +11,22 @@
     ( 
     import ../modules
     );
+
     users.users.${vars.user} = {
     home =  "/home/stephan";
     isNormalUser = true;
     description = "Stephan";
-    extraGroups = [ "wheel" "video" "audio" "camera" "networkmanager" "lp" "scanner" ];
+    extraGroups = [ "wheel" "video" "audio" "camera" "networkmanager" "lp" "scanner" "vboxusers" ];
     };
+ 
  nixpkgs.config.permittedInsecurePackages = [
-                "electron-24.8.6"
+    "electron-24.8.6"
 		"electron-25.9.0"
 		];
+
  nixpkgs.config.allowUnfree = true;
 
-nixpkgs.overlays = [ (final: prev: { obsidian-wayland = prev.obsidian.override {electron = final.electron_24;}; }) ];
+ nixpkgs.overlays = [ (final: prev: { obsidian-wayland = prev.obsidian.override {electron = final.electron_24;}; }) ];
 
 
   # Set your time zone.
@@ -49,6 +52,24 @@ nixpkgs.overlays = [ (final: prev: { obsidian-wayland = prev.obsidian.override {
     polkit.enable = true;
   };
   
+  fonts.packages = with pkgs; [
+    carlito # NixOS
+    vegur # NixOS
+    source-code-pro
+    jetbrains-mono
+    font-awesome # Icons
+    corefonts # MS
+    noto-fonts # Google + Unicode
+    noto-fonts-cjk
+    noto-fonts-emoji
+    (nerdfonts.override {
+      fonts = [
+        "FiraCode"
+      ];
+    })
+  ];
+
+
   nix = {                                   # Nix Package Manager Settings
     settings ={
       auto-optimise-store = true;
@@ -78,6 +99,8 @@ nixpkgs.overlays = [ (final: prev: { obsidian-wayland = prev.obsidian.override {
   usbutils
   xdg-utils
   git
+  nodejs
+  xdg-utils         # Environment integration
   htop
   nano
   home-manager
@@ -91,9 +114,11 @@ nixpkgs.overlays = [ (final: prev: { obsidian-wayland = prev.obsidian.override {
   flatpak
   networkmanager
   networkmanagerapplet
+  appimage-run
   unstable.hypridle
   obsidian-wayland
   unstable.cosmic-edit 
+  unstable.cosmic-files
 
     (catppuccin-gtk.override {
     accents = [ "lavender" ]; # You can specify multiple accents here to output multiple themes
@@ -131,31 +156,12 @@ nixpkgs.overlays = [ (final: prev: { obsidian-wayland = prev.obsidian.override {
     flatpak.enable = true;
   };
 
-
-
-fonts.packages = with pkgs; [                # Fonts
-    carlito                                 # NixOS
-    vegur                                   # NixOS
-    source-code-pro
-    jetbrains-mono
-    font-awesome                            # Icons
-    corefonts                               # MS
-    (nerdfonts.override {                   # Nerdfont Icons override
-      fonts = [
-        "FiraCode"
-      ];
-    })
-  ];
-
   networking.networkmanager.enable = true;
 
   
   services.xserver.videoDrivers = [ "amdgpu" ];
   hardware.enableRedistributableFirmware = true;
 
-
-  # services.xserver.displayManager.gdm.enable = true;
-   services.xserver.desktopManager.gnome.enable = true;
 
  services.mullvad-vpn.enable = true;
 
@@ -212,6 +218,7 @@ environment.sessionVariables = {
     imports = [
     inputs.nix-colors.homeManagerModules.default
     ];
+    
   };
 
  programs.openvpn3.enable =true;
@@ -233,6 +240,10 @@ nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
     "steam-run"
   ];
 
+
+   virtualisation.virtualbox.host.enable = true;
+   users.extraGroups.vboxusers.members = [ "user-with-access-to-virtualbox" ];
+   virtualisation.virtualbox.host.enableExtensionPack = true;
 
 
 

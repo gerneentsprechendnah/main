@@ -1,5 +1,5 @@
 
-{ lib, inputs, nixpkgs, nixpkgs-unstable, hyprland, home-manager, vars, nix-colors, hyprlock, hypridle, ... }:
+{inputs, vars, nixpkgs, nixpkgs-unstable, home-manager, nix-pandoc, nix-colors, hyprlock, hypridle, hyprland, home-manager-unstable, nur, nixgl, nixvim, nixvim-unstable, hyprspace, plasma-manager, ... }:
 
 let
   system = "x86_64-linux";                                  # System Architecture
@@ -17,10 +17,12 @@ let
   lib = nixpkgs.lib;
 in
 {
-desktop = lib.nixosSystem {                               # DEPRECATED Desktop Profile
+
+# DEPRECATED Desktop Profile
+desktop = lib.nixosSystem {                               
     inherit system;
     specialArgs = {
-      inherit inputs system unstable vars hyprland nix-colors hyprlock hypridle ;
+      inherit inputs system unstable vars hyprland nix-colors hyprlock hypridle hyprspace nix-pandoc;
       host = {
         hostName = "desktop";
         mainMonitor = "DP-1";
@@ -28,13 +30,15 @@ desktop = lib.nixosSystem {                               # DEPRECATED Desktop P
       };
     };
     modules = [
-      ./desktop
-      ./configuration.nix
+     nur.nixosModules.nur
+     nixvim.nixosModules.nixvim
+     ./desktop
+     ./configuration.nix
 
       home-manager.nixosModules.home-manager {
         home-manager.extraSpecialArgs = {
            inherit (inputs.nix-colors.lib-contrib {inherit pkgs;}) gtkThemeFromScheme;
-	};
+	        };
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
       }
@@ -45,7 +49,7 @@ desktop = lib.nixosSystem {                               # DEPRECATED Desktop P
 laptop = lib.nixosSystem {                                # Laptop Profile
     inherit system;
     specialArgs = {
-      inherit inputs system unstable vars hyprland nix-colors hyprlock hypridle;
+      inherit inputs system unstable vars hyprland nix-colors hyprlock hypridle hyprspace nix-pandoc;
       host = {
         hostName = "laptop";
         mainMonitor = "eDP-1";

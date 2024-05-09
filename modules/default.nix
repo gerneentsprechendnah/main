@@ -23,6 +23,7 @@
    ./hyprlock.nix
    #./hypridle.nix
    ./firefox.nix
+   ./desktops/gnome.nix
   ]
   
 

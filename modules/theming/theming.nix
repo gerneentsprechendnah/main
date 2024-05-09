@@ -123,8 +123,6 @@ gtk = {
        '';
 
 
-
-
     };  
 
     qt.enable = true;
