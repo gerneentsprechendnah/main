@@ -1,29 +1,27 @@
  [
-    ./programs.nix
-   # ./waybar.nix
-    ./waybar_alternative.nix
-   ./hyprland_alternativ.nix
-   #./hyprland.nix
-   # ./rofi.nix
-    ./wlogout.nix
-   # ./eww.nix
+    ./programs/programs.nix
+   # ./services/waybar.nix
+    ./services/waybar_alternative.nix
+   # ./services/rofi.nix
+   ./services/wlogout.nix
    ./options.nix
-   ./rofi_alternative.nix
-   ./dunst.nix
-   ./bluetooth.nix
-   ./wofi.nix
-   ./eww.nix
-   #./nextcloud-client.nix
-  # ./obsidian.nix
-   #./neovim.nix
-   #./zsh.nix
+   ./services/rofi.nix
+   ./services/dunst.nix
+   ./services/bluetooth.nix
+   ./services/wofi.nix
+   ./services/eww.nix
+  # ./programs/obsidian.nix
+   ./programs/zsh.nix
    #./alacritty.nix
    ./theming/theming.nix
    #/ags.nix
-   ./hyprlock.nix
-   #./hypridle.nix
-   ./firefox.nix
+   ./services/hyprlock.nix
+   #./services/hypridle.nix
+   ./programs/firefox.nix
    ./desktops/gnome.nix
+   ./desktops/hyprland.nix
+   #./programs/thunderbird.nix
+
   ]
   
 
