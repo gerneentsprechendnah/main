@@ -5,7 +5,6 @@ home-manager.users.stephan = {
       #pkgs.thunderbird-bin
       pkgs.thunderbird
       pkgs.chromium 
-      pkgs.typora 
       pkgs.bitwarden
       pkgs.gedit 
       pkgs.hyprland 
@@ -48,11 +47,11 @@ home-manager.users.stephan = {
       pkgs.masterpdfeditor
       pkgs.signal-desktop
       pkgs.marker
-      pkgs.xfce.thunar
       pkgs.gimp
       pkgs.unifi
       pkgs.telegram-desktop
-      pkgs.vscode    
+      pkgs.vscode  
+      pkgs.typora  
       ];
 
     services.dunst.enable = true;

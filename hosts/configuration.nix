@@ -18,6 +18,8 @@
     description = "Stephan";
     extraGroups = [ "wheel" "video" "audio" "camera" "networkmanager" "lp" "scanner" "vboxusers" ];
     };
+
+    users.defaultUserShell = pkgs.zsh;
  
  nixpkgs.config.permittedInsecurePackages = [
     "electron-24.8.6"

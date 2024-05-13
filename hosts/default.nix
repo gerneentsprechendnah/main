@@ -66,5 +66,27 @@ laptop = lib.nixosSystem {                                # Laptop Profile
       }
     ];
   };
+
+surface = lib.nixosSystem {                                # Surface Profile
+    inherit system;
+    specialArgs = {
+      inherit inputs system unstable vars hyprland nix-colors hyprlock hypridle hyprspace nix-pandoc nixos-hardware;
+      host = {
+        hostName = "surface";
+        mainMonitor = "eDP-1";
+        secondMonitor = "";
+      };
+    };
+    modules = [
+      ./surface
+      ./configuration.nix
+
+      home-manager.nixosModules.home-manager {
+        home-manager.useGlobalPkgs = true;
+        home-manager.useUserPackages = true;
+      }
+    ];
+  };
+
 }
 

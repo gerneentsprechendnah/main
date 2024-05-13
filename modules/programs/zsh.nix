@@ -1,14 +1,14 @@
 { pkgs, config, home-manager, ... }:
 
 {
-
-
-
-programs.zsh = {
+ programs.zsh = {
   enable = true;
+  autosuggestions.enable = true;
+  syntaxHighlighting.enable = true;
   shellAliases = {
     ll = "ls -l";
-    update = "sudo nixos-rebuild switch";
+    update = "sudo nixos-rebuild switch --flake .#desktop";
+    garbage = "sudo nix-store -gc";
     };
   histSize = 10000;
   ohMyZsh = {
@@ -16,7 +16,7 @@ programs.zsh = {
     plugins = [ "git" "thefuck" ];
     theme = "robbyrussell";
   };
-};
+ };
 
 programs.thefuck = {
   enable = true;
