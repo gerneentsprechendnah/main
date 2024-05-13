@@ -119,8 +119,6 @@
   appimage-run
   unstable.hypridle
   obsidian-wayland
-  unstable.cosmic-edit 
-  unstable.cosmic-files
 
     (catppuccin-gtk.override {
     accents = [ "lavender" ]; # You can specify multiple accents here to output multiple themes
