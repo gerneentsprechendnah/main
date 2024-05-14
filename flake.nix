@@ -14,6 +14,8 @@
 
       nix-colors.url = "github:misterio77/nix-colors";
 
+      nixos-hardware.url = "github:NixOS/nixos-hardware/master";     # linux hardware for surface go 3
+
       home-manager = {                                                      # User Environment Manager
         url = "github:nix-community/home-manager/release-23.11";
         inputs.nixpkgs.follows = "nixpkgs";
@@ -83,7 +85,7 @@
 
 
 
-   outputs = inputs @ { self, nixpkgs, nixpkgs-unstable, home-manager, nix-pandoc, nix-colors, hyprlock, hypridle, hyprland, home-manager-unstable, nur, nixgl, nixvim, nixvim-unstable, hyprspace, plasma-manager, ... }:   # Function telling flake which inputs to use
+   outputs = inputs @ { self, nixpkgs, nixpkgs-unstable, home-manager, nix-pandoc, nix-colors, hyprlock, hypridle, hyprland, home-manager-unstable, nur, nixgl, nixvim, nixvim-unstable, hyprspace, plasma-manager, nixos-hardware, ... }:   # Function telling flake which inputs to use
     let
       vars = {                                                              # Variables Used In Flake
         user = "stephan";
@@ -97,7 +99,7 @@
       nixosConfigurations = (                                               # NixOS Configurations
           import ./hosts {
           inherit (nixpkgs) lib;
-          inherit inputs self nixpkgs nixpkgs-unstable home-manager nix-pandoc nix-colors hyprlock hypridle hyprland home-manager-unstable nur nixgl nixvim nixvim-unstable hyprspace plasma-manager vars;   # Inherit inputs
+          inherit inputs self nixpkgs nixpkgs-unstable home-manager nix-pandoc nix-colors hyprlock hypridle hyprland home-manager-unstable nur nixgl nixvim nixvim-unstable hyprspace plasma-manager vars nixos-hardware;   # Inherit inputs
           }
       );
 

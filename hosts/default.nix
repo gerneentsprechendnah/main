@@ -1,5 +1,5 @@
 
-{inputs, vars, nixpkgs, nixpkgs-unstable, home-manager, nix-pandoc, nix-colors, hyprlock, hypridle, hyprland, home-manager-unstable, nur, nixgl, nixvim, nixvim-unstable, hyprspace, plasma-manager, ... }:
+{inputs, vars, nixpkgs, nixpkgs-unstable, home-manager, nix-pandoc, nix-colors, hyprlock, hypridle, hyprland, home-manager-unstable, nur, nixgl, nixvim, nixvim-unstable, hyprspace, plasma-manager, nixos-hardware, ... }:
 
 let
   system = "x86_64-linux";                                  # System Architecture
@@ -80,6 +80,9 @@ surface = lib.nixosSystem {                                # Surface Profile
     modules = [
       ./surface
       ./configuration.nix
+
+      nixos-hardware.nixosModules.surface.surface-go
+
 
       home-manager.nixosModules.home-manager {
         home-manager.useGlobalPkgs = true;
