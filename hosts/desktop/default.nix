@@ -53,8 +53,7 @@ networking.hostId = "2245754b";
 
 #hyprland.enable = true;
 gnome.enable = true;
-#services.xserver.displayManager.gdm.enable = true;
-#services.xserver.desktopManager.gnome.enable = true;
+
   
   environment = {
     systemPackages = with pkgs; [               # System-Wide Packages
@@ -91,6 +90,8 @@ fileSystems."/home/stephan/Nextcloud" = {
     in ["${automount_opts},credentials=/etc/nixos/smb-secrets,uid=1000,gid=100"];
   };
 
- 
+ virtualisation.virtualbox.host.enable = true;
+   users.extraGroups.vboxusers.members = [ "user-with-access-to-virtualbox" ];
+   virtualisation.virtualbox.host.enableExtensionPack = true;
 
 }

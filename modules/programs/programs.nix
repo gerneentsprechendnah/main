@@ -24,7 +24,7 @@ home-manager.users.stephan = {
       #pkgs.unzip
       #pkgs.firefox
       pkgs.pandoc
-      pkgs.texliveFull
+      pkgs.texliveMedium
       pkgs.onlyoffice-bin
       pkgs.libreoffice
       pkgs.zoom-us

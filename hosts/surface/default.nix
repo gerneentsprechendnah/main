@@ -21,26 +21,23 @@
     ./hardware-configuration.nix
   ];
 
-  boot = {                                  # Boot Options
+ boot = {                                      # Boot Options
     loader = {
-      efi = {
-        canTouchEfiVariables = true;
-        efiSysMountPoint = "/boot";
-      };
-      grub = {                              # Grub Dual Boot
+      systemd-boot = {
         enable = true;
-        devices = [ "nodev" ];
-        efiSupport = true;
-        useOSProber = true;                 # Find All Boot Options
-        configurationLimit = 2;
+        configurationLimit = 5;
       };
-      timeout = 5;
+      efi.efiSysMountPoint = "/boot";
+      efi.canTouchEfiVariables = true;
+      timeout = 1;
     };
-    kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages =  pkgs.linuxPackages_latest;
+      # Video Drivers
+    
   };
 
 
-networking.hostName = "laptop"; # Define your hostname.
+networking.hostName = "surface"; # Define your hostname.
 
 
   laptop.enable = true;                     # Laptop Modules

@@ -47,9 +47,9 @@ networking.hostName = "laptop"; # Define your hostname.
     extraBackends = [ pkgs.sane-airscan ];
   };
 
-#  laptop.enable = true;                     # Laptop Modules
-  hyprland.enable = true;                      # Window Manager
-
+  laptop.enable = true;                     # Laptop Modules
+  #hyprland.enable = true;                      # Window Manager
+  gnome.enable = true;
   environment = {
     systemPackages = with pkgs; [           # System-Wide Packages
       simple-scan       # Scanning

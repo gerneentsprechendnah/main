@@ -81,7 +81,7 @@ surface = lib.nixosSystem {                                # Surface Profile
       ./surface
       ./configuration.nix
 
-      nixos-hardware.nixosModules.surface.surface-go
+      nixos-hardware.nixosModules.microsoft-surface-go
 
 
       home-manager.nixosModules.home-manager {
