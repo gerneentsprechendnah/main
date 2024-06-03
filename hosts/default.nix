@@ -1,5 +1,5 @@
 
-{inputs, vars, nixpkgs, nixpkgs-unstable, home-manager, nix-pandoc, nix-colors, hyprlock, hypridle, hyprland, home-manager-unstable, nur, nixgl, nixvim, nixvim-unstable, hyprspace, plasma-manager, nixos-hardware, ... }:
+{inputs, vars, nixpkgs, nixpkgs-latest, home-manager, nix-pandoc, nix-colors, hypridle, hyprland, home-manager-latest, nur, nixgl, hyprspace, plasma-manager, nixos-hardware, ... }:
 
 let
   system = "x86_64-linux";                                  # System Architecture
@@ -9,7 +9,7 @@ let
     config.allowUnfree = true;                              # Allow Proprietary Software
   };
 
-  unstable = import nixpkgs-unstable {
+  latest = import nixpkgs-latest {
     inherit system;
     config.allowUnfree = true;
   };
@@ -22,7 +22,7 @@ in
 desktop = lib.nixosSystem {                               
     inherit system;
     specialArgs = {
-      inherit inputs system unstable vars hyprland nix-colors hyprlock hypridle hyprspace nix-pandoc;
+      inherit inputs system latest vars hyprland nix-colors hypridle hyprspace nix-pandoc;
       host = {
         hostName = "desktop";
         mainMonitor = "DP-1";
@@ -31,7 +31,6 @@ desktop = lib.nixosSystem {
     };
     modules = [
      nur.nixosModules.nur
-     nixvim.nixosModules.nixvim
      ./desktop
      ./configuration.nix
 
@@ -49,7 +48,7 @@ desktop = lib.nixosSystem {
 laptop = lib.nixosSystem {                                # Laptop Profile
     inherit system;
     specialArgs = {
-      inherit inputs system unstable vars hyprland nix-colors hyprlock hypridle hyprspace nix-pandoc;
+      inherit inputs system latest vars hyprland nix-colors hypridle hyprspace nix-pandoc;
       host = {
         hostName = "laptop";
         mainMonitor = "eDP-1";
@@ -70,7 +69,7 @@ laptop = lib.nixosSystem {                                # Laptop Profile
 surface = lib.nixosSystem {                                # Surface Profile
     inherit system;
     specialArgs = {
-      inherit inputs system unstable vars hyprland nix-colors hyprlock hypridle hyprspace nix-pandoc nixos-hardware;
+      inherit inputs system latest vars hyprland nix-colors hypridle hyprspace nix-pandoc nixos-hardware;
       host = {
         hostName = "surface";
         mainMonitor = "eDP-1";

@@ -6,7 +6,7 @@ home-manager.users.stephan = {
       pkgs.thunderbird
       pkgs.chromium 
       pkgs.bitwarden
-      pkgs.gedit 
+     # pkgs.gedit 
       pkgs.hyprland 
       pkgs.kitty 
       pkgs.dunst 
@@ -24,7 +24,7 @@ home-manager.users.stephan = {
       #pkgs.unzip
       #pkgs.firefox
       pkgs.pandoc
-      pkgs.texliveMedium
+      pkgs.texliveFull
       pkgs.onlyoffice-bin
       pkgs.libreoffice
       pkgs.zoom-us
@@ -48,7 +48,7 @@ home-manager.users.stephan = {
       pkgs.signal-desktop
       pkgs.marker
       pkgs.gimp
-      pkgs.unifi
+      #pkgs.unifi
       pkgs.telegram-desktop
       pkgs.vscode  
       pkgs.typora  

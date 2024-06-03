@@ -2,11 +2,9 @@
   description = "Flake by Stephan";
   
   inputs = {
-      nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";                     # Unstable Nix Packages (Default)
+      nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";                     # latest Nix Packages (Default)
 
-      nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";         # Stable Nix Packages
-
-      hyprlock.url = "github:hyprwm/Hyprlock";
+      nixpkgs-latest.url = "github:nixos/nixpkgs/nixos-unstable";         # Stable Nix Packages
 
       nix-pandoc.url = "github:serokell/nix-pandoc";
 
@@ -17,14 +15,14 @@
       nixos-hardware.url = "github:NixOS/nixos-hardware/master";     # linux hardware for surface go 3
 
       home-manager = {                                                      # User Environment Manager
-        url = "github:nix-community/home-manager/release-23.11";
+        url = "github:nix-community/home-manager/release-24.05";
         inputs.nixpkgs.follows = "nixpkgs";
       };
 
-        # Unstable User Environment Manager
-      	home-manager-unstable = {					     
+        # latest User Environment Manager
+      	home-manager-latest = {					     
         url = "github:nix-community/home-manager";
-        inputs.nixpkgs.follows = "nixpkgs-unstable";
+        inputs.nixpkgs.follows = "nixpkgs-latest";
       };
 
       firefox-addons = { 
@@ -40,7 +38,7 @@
           
       hypridle = {
       url = "github:hyprwm/hypridle";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.nixpkgs.follows = "nixpkgs-latest";
       };
 
       # NUR Community Packages
@@ -55,23 +53,11 @@
         inputs.nixpkgs.follows = "nixpkgs";
       };
 
-      # Neovim
-      nixvim = {
-        url = "github:nix-community/nixvim/nixos-23.11";
-        inputs.nixpkgs.follows = "nixpkgs";
-      };
-
-      # Neovim
-      nixvim-unstable = {
-        url = "github:nix-community/nixvim";
-        inputs.nixpkgs.follows = "nixpkgs-unstable";
-      };
-
       # Hyprspace
       hyprspace = {
         url = "github:KZDKM/Hyprspace";
         inputs.hyprland.follows = "hyprland";
-        inputs.nixpkgs.follows = "nixpkgs-unstable";
+        inputs.nixpkgs.follows = "nixpkgs-latest";
       };
 
       # KDE Plasma User Settings Generator
@@ -85,7 +71,7 @@
 
 
 
-   outputs = inputs @ { self, nixpkgs, nixpkgs-unstable, home-manager, nix-pandoc, nix-colors, hyprlock, hypridle, hyprland, home-manager-unstable, nur, nixgl, nixvim, nixvim-unstable, hyprspace, plasma-manager, nixos-hardware, ... }:   # Function telling flake which inputs to use
+   outputs = inputs @ { self, nixpkgs, nixpkgs-latest, home-manager, nix-pandoc, nix-colors, hypridle, hyprland, home-manager-latest, nur, nixgl, hyprspace, plasma-manager, nixos-hardware, ... }:   # Function telling flake which inputs to use
     let
       vars = {                                                              # Variables Used In Flake
         user = "stephan";
@@ -99,7 +85,7 @@
       nixosConfigurations = (                                               # NixOS Configurations
           import ./hosts {
           inherit (nixpkgs) lib;
-          inherit inputs self nixpkgs nixpkgs-unstable home-manager nix-pandoc nix-colors hyprlock hypridle hyprland home-manager-unstable nur nixgl nixvim nixvim-unstable hyprspace plasma-manager vars nixos-hardware;   # Inherit inputs
+          inherit inputs self nixpkgs nixpkgs-latest home-manager nix-pandoc nix-colors hypridle hyprland home-manager-latest nur nixgl hyprspace plasma-manager vars nixos-hardware;   # Inherit inputs
           }
       );
 

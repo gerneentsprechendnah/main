@@ -19,8 +19,8 @@
     
   };
 
-
-services.unifi.enable = true;
+nix.settings.trusted-users = [ "nixdist" ];
+#services.unifi.enable = true;
 
   
  services.xserver.displayManager.startx.enable = true;
@@ -61,6 +61,7 @@ gnome.enable = true;
       simple-scan       # Scanning
       lm_sensors
       cifs-utils
+      xournalpp
     ];
   };
 
@@ -90,8 +91,10 @@ fileSystems."/home/stephan/Nextcloud" = {
     in ["${automount_opts},credentials=/etc/nixos/smb-secrets,uid=1000,gid=100"];
   };
 
- virtualisation.virtualbox.host.enable = true;
-   users.extraGroups.vboxusers.members = [ "user-with-access-to-virtualbox" ];
-   virtualisation.virtualbox.host.enableExtensionPack = true;
+ #virtualisation.virtualbox.host.enable = true;
+ #  users.extraGroups.vboxusers.members = [ "user-with-access-to-virtualbox" ];
+  # virtualisation.virtualbox.host.enableExtensionPack = true;
+
+virtualisation.waydroid.enable = true;
 
 }

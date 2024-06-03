@@ -52,7 +52,7 @@ home-manager.users.stephan = {
       "clock" = {
         format = "{:%b %d %H:%M}";
       	tooltip = false;
-        on-click = "sleep 0.1; ${pkgs.eww-wayland}/bin/eww open --toggle calendar --screen 0";
+        on-click = "sleep 0.1; ${pkgs.eww}/bin/eww open --toggle calendar --screen 0";
       };
       "hyprland/window" = {
       	max-length = 60;
@@ -144,7 +144,7 @@ home-manager.users.stephan = {
 	};
       "custom/exit" = {
 	format = "󰐥";
-	on-click = ''${pkgs.eww-wayland}/bin/eww open --toggle menu --screen 0'';
+	on-click = ''${pkgs.eww}/bin/eww open --toggle menu --screen 0'';
 	tooltip = false;
 	};
       

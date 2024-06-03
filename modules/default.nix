@@ -12,10 +12,9 @@
    ./services/eww.nix
   # ./programs/obsidian.nix
    ./programs/zsh.nix
-   #./alacritty.nix
    ./theming/theming.nix
    #/ags.nix
-   ./services/hyprlock.nix
+   #./services/hyprlock.nix
    #./services/hypridle.nix
    ./programs/firefox.nix
    ./desktops/gnome.nix

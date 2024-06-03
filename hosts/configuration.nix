@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ lib, pkgs, unstable, inputs, vars, nix-colors, ... }:
+{ lib, pkgs, latest, inputs, vars, nix-colors, ... }:
 
 
 
@@ -14,10 +14,15 @@
 
     users.users.${vars.user} = {
     home =  "/home/stephan";
-    isNormalUser = true;
+    uid = 1000;
+    isSystemUser = true;
+    group = "users";
+    useDefaultShell = true;
     description = "Stephan";
     extraGroups = [ "wheel" "video" "audio" "camera" "networkmanager" "lp" "scanner" "vboxusers" ];
     };
+
+
 
     users.defaultUserShell = pkgs.zsh;
  
@@ -81,7 +86,7 @@
       dates = "weekly";
       options = "--delete-older-than 10d";
     };
-    package = pkgs.nixVersions.unstable;    # Enable Flakes
+    package = pkgs.nixVersions.latest;    # Enable Flakes
     registry.nixpkgs.flake = inputs.nixpkgs;
     extraOptions = ''
       experimental-features = nix-command flakes
@@ -117,7 +122,7 @@
   networkmanager
   networkmanagerapplet
   appimage-run
-  unstable.hypridle
+  latest.hypridle
   obsidian-wayland
 
     (catppuccin-gtk.override {
@@ -130,7 +135,7 @@
   # File Management
       gnome.file-roller # Archive Manager
       okular            # PDF Viewer
-      pcmanfm           # File Browser
+      pcmanfm           # File Browsermicrosoft-surfac
       p7zip             # Zip Encryption
       rsync             # Syncer - $ rsync -r dir1/ dir2/
       unzip             # Zip Files
@@ -167,8 +172,8 @@
 
   # Configure keymap in X11
   services.xserver = {
-    layout = "de";
-    xkbVariant = "";
+    xkb.layout = "de";
+    xkb.variant = "";
   };
 
   # Configure console keymap
@@ -187,11 +192,11 @@
   jack.enable = true;
 };
 
-  system.stateVersion = "23.11"; # Did you read the comment?
+  system.stateVersion = "24.05"; # Did you read the comment?
 
   #system.autoUpgrade = {
   #  enable = true;
-  #  channel = "https://nixos.org/channels/nixos-unstable";
+  #  channel = "https://nixos.org/channels/nixos-latest";
   # };
   
   programs = {
@@ -212,7 +217,7 @@ environment.sessionVariables = {
  
 
   home-manager.users.${vars.user} = {       # Home-Manager Settings
-    home = { stateVersion = "23.11"; };
+    home = { stateVersion = "24.05"; };
     programs = { home-manager.enable = true; };
     colorScheme = inputs.nix-colors.colorSchemes."${vars.theme}";
     imports = [
@@ -241,9 +246,7 @@ nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
   ];
 
 
-   virtualisation.virtualbox.host.enable = true;
-   users.extraGroups.vboxusers.members = [ "user-with-access-to-virtualbox" ];
-   virtualisation.virtualbox.host.enableExtensionPack = true;
+   
 
 
 

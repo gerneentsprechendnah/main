@@ -118,7 +118,7 @@ in
 	      
 		"custom/exit" = {
 		"format" = "󰐥";
-		"on-click" = ''${pkgs.eww-wayland}/bin/eww open --toggle menu --screen 0'';
+		"on-click" = ''${pkgs.eww}/bin/eww open --toggle menu --screen 0'';
 		"tooltip" = false;
 		};
 	    
@@ -147,7 +147,7 @@ in
 	    };
 	   clock = {
               format = "{:%b %d %H:%M}  ";
-              on-click = "sleep 0.1; ${pkgs.eww-wayland}/bin/eww open --toggle calendar --screen 0";
+              on-click = "sleep 0.1; ${pkgs.eww}/bin/eww open --toggle calendar --screen 0";
             };
 	    "cpu" = {
 		"format" = " {usage}% ";

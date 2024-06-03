@@ -26,12 +26,13 @@ with lib;
     };
 
     services = {
+       libinput.enable = true;
       xserver = {
         enable = true;
         
-        layout = "de";
-        xkbOptions = "eurosign:e";
-        libinput.enable = true;
+        xkb.layout = "de";
+        xkb.options = "eurosign:e";
+       
         modules = [ pkgs.xf86_input_wacom ];
         wacom.enable = true;
 
@@ -59,6 +60,7 @@ with lib;
         gnome.dconf-editor
         gnome.gnome-tweaks
         pkgs.gnome.gnome-control-center
+        pkgs.gnome-console
       ];
       gnome.excludePackages = (with pkgs; [
         gnome-tour
@@ -66,7 +68,6 @@ with lib;
         atomix
         epiphany
         geary
-        gedit
         gnome-characters
         gnome-contacts
         gnome-initial-setup
@@ -81,20 +82,17 @@ with lib;
       dconf.settings = {
         "org/gnome/shell" = {
           favorite-apps = [
-            "org.gnome.settings.desktop"
-            "alacritty.desktop"
+            "org.gnome.Settings.desktop"
+            "gnome-terminal.desktop"
             "firefox.desktop"
-            "emacs.desktop"
-            "org.gnome.nautilus.desktop"
+            "thunderbird.desktop"
+            "obsidian.desktop"
+            "nautilus.desktop"
+            "typora.desktop"
             "com.obsproject.studio.desktop"
             "plexmediaplayer.desktop"
-            "smartcode-stremio.desktop"
-            "obsdidian.desktop"
-            "steam.desktop"
-            "retroarch.desktop"
-            "com.parsecgaming.parsec.desktop"
-            "org.remmina.remmina.desktop"
             "virt-manager.desktop"
+            
             # "blueman-manager.desktop"
             # "pavucontrol.desktop"
           ];
@@ -109,7 +107,7 @@ with lib;
             "clipboard-indicator@tudmotu.com"
             "horizontal-workspace-indicator@tty2.io"
             "bluetooth-quick-connect@bjarosze.gmail.com"
-            "battery-indicator@jgotti.org"
+            
             "gsconnect@andyholmes.github.io"
             "pip-on-top@rafostar.github.com"
             "forge@jmmaranan.com"
@@ -247,10 +245,7 @@ with lib;
           widget-orientation = "horizontal";
           icons-style = "circles";
         };
-        "org/gnome/shell/extensions/bluetooth-quick-connect" = {
-          show-battery-icon-on = true;
-          show-battery-value-on = true;
-        };
+       
         "org/gnome/shell/extensions/pip-on-top" = {
           stick = true;
         };
@@ -298,7 +293,7 @@ with lib;
         removable-drive-menu
         dash-to-panel
         dash-to-dock
-        battery-indicator-upower
+        
         just-perfection
         caffeine
         clipboard-indicator
